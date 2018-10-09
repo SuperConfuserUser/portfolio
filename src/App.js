@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-
 import Projects from './containers/Projects'  
 
-const projects = [
-  {
-    name: "Very First Project",
-    description: "Hello World!",
-    img_url: "https://media.giphy.com/media/2xPPojqe3mraUXS6dk/giphy.gif"
-  },
-  {
-    name: "MyFace",
-    description: "The next big social media platform.",
-    img_url: "https://media.giphy.com/media/14cilFdQzr8hG0/giphy.gif"
-  }
-]
-
 class App extends Component {
+
+  constructor() {
+    super()
+
+    this.state= {
+      projects: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3001/api/projects')
+      .then(response => response.json())
+      .then(projects => this.setState({ projects }))
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <Projects projects={projects} />
+        <Projects projects={this.state.projects} />
       </div>
     );
   }
