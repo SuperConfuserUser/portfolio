@@ -1,24 +1,18 @@
-# README
+# GET /api/projects           index
+# GET /api/projects/:id       show
+# POST /api/projects          create
+# PUT /api/projects/:id       update
+# DELETE /api/projects/:id    delete
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project Model
 
-Things you may want to cover:
+# id
+# name
+# description
+# img_url //main OR thumbnail
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+has_many
+# media
+# category
+# technology
+# client
