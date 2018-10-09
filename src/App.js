@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Projects from './containers/Projects'  
 
+const API_URL = process.env.REACT_APP_API_URL
+
 class App extends Component {
 
   constructor() {
@@ -12,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/projects')
+    fetch(`${API_URL}/projects`)
       .then(response => response.json())
       .then(projects => this.setState({ projects }))
   }
