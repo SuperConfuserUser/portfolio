@@ -1,6 +1,6 @@
 import React from 'react'
-import ProjectCard from '../components/ProjectCard'
-import ProjectForm from '../components/ProjectForm'
+import ProjectCard from '../components/projects/ProjectCard'
+import ProjectForm from '../components/projects/ProjectForm'
 
 const Projects = ({ projects }) => {
   return (
