@@ -9,21 +9,25 @@ class App extends Component {
     super()
 
     this.state= {
-      projects: []
+      projects: [],
+      loading: true
     }
   }
 
   componentDidMount() {
     fetch(`${API_URL}/projects`)
       .then(response => response.json())
-      .then(projects => this.setState({ projects }))
+      .then(projects => this.setState({ projects, loading: false }))
   }
 
   render() {
     console.log(this.state)
     return (
       <div className="App">
-        <Projects projects={this.state.projects} />
+        {this.state.loading ? 
+          <h1>Loading...</h1> :
+          <Projects projects={this.state.projects} />
+        }
       </div>
     );
   }
