@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Projects from './containers/Projects'  
+import ProjectsContainer from './containers/ProjectsContainer'  
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -26,7 +26,7 @@ class App extends Component {
       <div className="App">
         {this.state.loading ? 
           <h1>Loading...</h1> :
-          <Projects projects={this.state.projects} />
+          <ProjectsContainer projects={this.state.projects} />
         }
       </div>
     );
