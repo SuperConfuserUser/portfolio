@@ -7,14 +7,14 @@ class App extends Component {
 
     this.state= {
       projects: [],
-      loading: true
+      loading: false
     }
   }
 
   componentDidMount() {
-    fetch(`/api/projects/`)
-      .then(response => response.json())
-      .then(projects => this.setState({ projects, loading: false }))
+    // fetch(`/api/projects/`)
+    //   .then(response => response.json())
+    //   .then(projects => this.setState({ projects, loading: false }))
   }
 
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
       <div className="App">
         {this.state.loading ? 
           <h1>Loading...</h1> :
-          <ProjectsContainer projects={this.state.projects} />
+          <ProjectsContainer />
         }
       </div>
     );
