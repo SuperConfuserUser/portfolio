@@ -10,26 +10,26 @@
 projects = Project.create([{
   name: "Very First Project",
   description: "Hello World!",
-  img_url: nil
+  img_url: "https://media.giphy.com/media/2xPPojqe3mraUXS6dk/giphy.gif"
 },
 {
   name: "MyFace",
   description: "The next big social media platform.",
-  img_url: nil
+  img_url: "https://media.giphy.com/media/14cilFdQzr8hG0/giphy.gif"
 },
 {
   name: "ChitCoin",
   description: "Cryptocurrency currently valued at $0.0000000001",
-  img_url: nil
+  img_url: "https://media.giphy.com/media/OS8mPktWKwacg/giphy.gif"
 },
 {
   name: "Skynet",
   description: "Artificial intelligence and machine learning to make the future a better place.",
-  img_url: nil
+  img_url: "https://media.giphy.com/media/TAywY9f1YFila/giphy.gif"
 },
 {
   name: "Matrix",
   description: "MMO with direct interface. The immersion is way more realistic.",
-  img_url: nil
+  img_url: "https://media.giphy.com/media/zXmbOaTpbY6mA/giphy.gif"
 }])
  
