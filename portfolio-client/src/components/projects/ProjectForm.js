@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateProjectFormData } from '../../actions/projectFormActions'
+import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { createProject } from '../../actions/projectsActions'
 
 export class ProjectForm extends Component {
@@ -65,5 +65,8 @@ export class ProjectForm extends Component {
 
 const mapStateToProps = ({ projectFormData }) => ({ projectFormData })
 
-export default connect(mapStateToProps, { updateProjectFormData,
-createProject })(ProjectForm)
+export default connect(mapStateToProps, { 
+  updateProjectFormData,
+  resetProjectForm,
+  createProject 
+})(ProjectForm)

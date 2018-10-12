@@ -1,3 +1,5 @@
+import { resetProjectForm } from './projectFormActions'
+
 // ** Action Creators ** 
 export const setProjects = projects => {
   return {
@@ -33,7 +35,10 @@ export const createProject = project => {
       body: JSON.stringify({ project: project })
     })
       .then(response => response.json())
-      .then(project => dispatch(addProject(project)))
+      .then(project => {
+        dispatch(addProject(project))
+        dispatch(resetProjectForm())
+      })
       .catch(error => console.log(error))
   }
 }

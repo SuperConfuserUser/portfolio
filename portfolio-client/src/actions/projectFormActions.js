@@ -6,6 +6,12 @@ export const updateProjectFormData = projectFormData => {
   }
 }
 
+export const resetProjectForm = () => {
+  return {
+    type: 'RESET_PROJECT_FORM'
+  }
+}
+
 
 // ** Async Actions **
 // export const getProjects = () => {
