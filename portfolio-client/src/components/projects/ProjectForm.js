@@ -1,42 +1,45 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { updateProjectFormData } from '../../actions/projectFormActions'
+
 
 export class ProjectForm extends Component {
 
-  state = {
-    name: '',
-    img_url: '',
-    description: ''
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleOnChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  handleChange = event => {
+    const { name, value } = event.target
+    const currentProject = { ...this.props.projectFormData,  [name]: value }
+    this.props.updateProjectFormData(currentProject)
   }
 
-  handleOnSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault()
-    this.setState({
-      name: '',
-      img_url: '',
-      description: ''
-    })
-    console.log(this.state)
+    // this.setState({
+    //   name: '',
+    //   img_url: '',
+    //   description: ''
+    // })
+    console.log(this.props.projectFormData)
   }
 
   render() {
-    const { name, img_url, description } = this.state
+    const { name, img_url, description } = this.props.projectFormData
 
     return (
       <div>
-        <h2>Add New Project</h2>
-        <form onSubmit={this.handleOnSubmit}>
+        <h3>New Project</h3>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>
             <input 
               type="text" 
               name="name"
-              onChange={this.handleOnChange}
+              onChange={this.handleChange}
               value={name}
             />
           </div>
@@ -45,7 +48,7 @@ export class ProjectForm extends Component {
             <input 
               type="text" 
               name="img_url"
-              onChange={this.handleOnChange}
+              onChange={this.handleChange}
               value={img_url}
             />
           </div>
@@ -53,7 +56,7 @@ export class ProjectForm extends Component {
             <label htmlFor="description">Description</label>
             <textarea 
               name="description"
-              onChange={this.handleOnChange}
+              onChange={this.handleChange}
               value={description}
             />
           </div>
@@ -65,4 +68,7 @@ export class ProjectForm extends Component {
   }
 }
 
-export default ProjectForm
+const mapStateToProps = ({ projectFormData }) => ({ projectFormData })
+
+export default connect(mapStateToProps, { updateProjectFormData
+})(ProjectForm)
