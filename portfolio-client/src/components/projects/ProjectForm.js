@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { createProject } from '../../actions/projectsActions'
 
-export class ProjectForm extends Component {
+class ProjectForm extends Component {
 
   constructor(props) {
     super(props)

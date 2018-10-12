@@ -9,7 +9,7 @@ class Projects extends Component {
   componentDidMount() {
     this.props.getProjects()
   }
-
+ 
   render() {
     const { projects } = this.props
 
@@ -29,4 +29,3 @@ export default connect(mapStateToProps, {
   getProjects,
   deleteProject
 })(Projects)
-
