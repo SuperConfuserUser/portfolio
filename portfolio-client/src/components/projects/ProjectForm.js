@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateProjectFormData } from '../../actions/projectFormActions'
-
+import { createProject } from '../../actions/projectsActions'
 
 export class ProjectForm extends Component {
 
@@ -19,12 +19,7 @@ export class ProjectForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    // this.setState({
-    //   name: '',
-    //   img_url: '',
-    //   description: ''
-    // })
-    console.log(this.props.projectFormData)
+    this.props.createProject(this.props.projectFormData)
   }
 
   render() {
@@ -70,5 +65,5 @@ export class ProjectForm extends Component {
 
 const mapStateToProps = ({ projectFormData }) => ({ projectFormData })
 
-export default connect(mapStateToProps, { updateProjectFormData
-})(ProjectForm)
+export default connect(mapStateToProps, { updateProjectFormData,
+createProject })(ProjectForm)
