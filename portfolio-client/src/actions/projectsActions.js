@@ -15,6 +15,13 @@ export const addProject = project => {
   }
 }
 
+export const updateProjectSuccess = project => {
+  return {
+    type: 'UPDATE_PROJECT_SUCCESS',
+    project
+  }
+}
+
 export const deleteProjectSuccess = id => {
   return {
     type: 'DELETE_PROJECT_SUCCESS',
@@ -46,7 +53,24 @@ export const createProject = project => {
         dispatch(addProject(project))
         dispatch(resetProjectForm())
       })
-      .catch(error => console.log(error))
+      .catch(({ error }) => console.log(error))
+  }
+}
+
+export const updateProject = project => {
+  return dispatch => {
+    return fetch('/api/projects/' + project.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ project: project })
+    })
+      .then(response => response.json())
+      .then(project => {
+        dispatch(updateProjectSuccess(project))
+      })
+      .catch(({ error }) => console.log(error))
   }
 }
 
