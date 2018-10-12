@@ -29,9 +29,9 @@ class Api::ProjectsController < ApplicationController
 
     def destroy
       if @project.destroy
-        render 204
+        render json: { message: "Project successfully deleted" }, status: 200
       else
-        render json: { message: "Unable to delete"}, status: 400
+        render json: { error: "Unable to delete"}, status: 400
       end
     end
 
@@ -42,7 +42,7 @@ class Api::ProjectsController < ApplicationController
       end
 
       def set_project
-        @project = Project.find_by(id: params[:id])
+        @project = Project.find(params[:id])
       end
 
 end

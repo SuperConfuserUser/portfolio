@@ -15,6 +15,13 @@ export const addProject = project => {
   }
 }
 
+export const deleteProjectSuccess = id => {
+  return {
+    type: 'DELETE_PROJECT_SUCCESS',
+    id
+  }
+}
+
 
 // ** Async Actions **
 export const getProjects = () => {
@@ -40,5 +47,19 @@ export const createProject = project => {
         dispatch(resetProjectForm())
       })
       .catch(error => console.log(error))
+  }
+}
+
+export const deleteProject = id => {
+  return dispatch => {
+    return fetch('/api/projects/' + id, {
+      method: 'DELETE' 
+    })
+      .then(response => response.json())
+      .then(({ message }) => {
+        console.log(message)
+        dispatch(deleteProjectSuccess(id))
+      })
+      .catch(({ error }) => console.log(error))
   }
 }
