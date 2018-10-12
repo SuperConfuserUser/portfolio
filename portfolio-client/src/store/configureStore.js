@@ -7,9 +7,12 @@ import thunk from 'redux-thunk'
 import rootReducer from '../reducers/rootReducer'
 
 const middleware = [thunk]
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(...middleware)
+const store = createStore(rootReducer,
+  composeEnhancers(
+    applyMiddleware(...middleware)
+  )
 )
+
+export default store
