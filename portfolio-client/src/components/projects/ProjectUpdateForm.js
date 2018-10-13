@@ -13,7 +13,7 @@ class ProjectUpdateForm extends Component {
 
   componentDidMount() {
     console.log('component mounted')
-    this.props.getProjectFormData(this.props.id)
+    this.props.getProjectFormData(this.props.match.params.projectId)
   }
 
   handleChange = event => {

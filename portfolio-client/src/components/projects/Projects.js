@@ -1,18 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import ProjectForm from './ProjectForm'
 import ProjectCard from './ProjectCard'
 
 const Projects = (props) => {
 
-  const renderProjects = props.projects.map(project=> 
-    <ProjectCard 
-      key={project.id} 
-      project={project} 
-      deleteProject={props.deleteProject} 
-    />)
+  const { match, projects, deleteProject } = props
+
+  const renderProjects = projects.map(project=> 
+    // <Link to={`${match.url}/${project.id}`}>
+      <ProjectCard 
+        key={project.id} 
+        project={project} 
+        deleteProject={deleteProject} 
+      />
+    // </Link>
+  )
 
   return (
     <div>
-    {renderProjects}
+      <Link to={`${match.url}/new`}>+</Link>
+
+      {renderProjects}
     </div>
   )
 }
