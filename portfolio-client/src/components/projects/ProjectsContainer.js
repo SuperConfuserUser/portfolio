@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Projects from '../components/projects/Projects'
-import ProjectForm from '../components/projects/ProjectForm'
-import ProjectUpdateForm from '../components/projects/ProjectUpdateForm'
-import { getProjects, deleteProject } from '../actions/projectsActions'
+import Projects from './Projects'
+import ProjectForm from './ProjectForm'
+import ProjectUpdateForm from './ProjectUpdateForm'
+import { getProjects, deleteProject } from '../../actions/projectsActions'
 
 class ProjectsContainer extends Component {
   componentDidMount() {
