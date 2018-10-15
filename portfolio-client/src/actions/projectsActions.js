@@ -52,6 +52,7 @@ export const createProject = project => {
       .then(project => {
         dispatch(addProject(project))
         dispatch(resetProjectForm())
+        return project
       })
       .catch(({ error }) => console.log(error))
   }
@@ -69,6 +70,7 @@ export const updateProject = project => {
       .then(response => response.json())
       .then(project => {
         dispatch(updateProjectSuccess(project))
+        return project
       })
       .catch(({ error }) => console.log(error))
   }

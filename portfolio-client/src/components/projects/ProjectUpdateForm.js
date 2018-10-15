@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 import { updateProjectFormData, resetProjectForm, getProjectFormData } from '../../actions/projectFormActions'
 import { updateProject } from '../../actions/projectsActions'
 
@@ -7,27 +9,42 @@ class ProjectUpdateForm extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      redirectUrl: ''
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    console.log('component mounted')
-    this.props.getProjectFormData(this.props.match.params.projectId)
+    const { getProjectFormData, match } = this.props
+    getProjectFormData(match.params.projectId)
   }
 
   handleChange = event => {
     const { name, value } = event.target
+    const { updateProjectFormData } = this.props
     const currentProject = { ...this.props.projectFormData,  [name]: value }
-    this.props.updateProjectFormData(currentProject)
+
+    updateProjectFormData(currentProject)
   }
 
   handleSubmit = event => {
+    const { updateProject, projectFormData } = this.props
+
     event.preventDefault()
-    this.props.updateProject(this.props.projectFormData)
+    updateProject(projectFormData)
+      .then(project => this.setState({ 
+        redirectUrl: `/projects/${project.id}` 
+      }))
   }
 
   render() {
+    
+    if(this.state.redirectUrl) {
+      return <Redirect push to={this.state.redirectUrl} />
+    }
+
     const { name, img_url, description } = this.props.projectFormData
 
     return (
