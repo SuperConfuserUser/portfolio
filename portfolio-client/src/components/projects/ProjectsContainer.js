@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import Projects from './Projects'
+import Project from './Project'
 import ProjectForm from './ProjectForm'
 import ProjectUpdateForm from './ProjectUpdateForm'
 import { getProjects, deleteProject } from '../../actions/projectsActions'
@@ -29,28 +30,11 @@ class ProjectsContainer extends Component {
           )} />
           <Route path={`${match.path}/new`} component={ProjectForm} />
           <Route path={`${match.path}/:projectId/edit`} component={ProjectUpdateForm} />
-          <Route path={`${match.path}/:projectId`} render={(props) => (<ProjectPage {...props} projects={projects} />)} />
+          <Route path={`${match.path}/:projectId`} component={Project} />)} />
         </Switch>
       </div>
     )
   }
-}
-
-const ProjectPage = (props) => {
-  const { match } = props
-
-  const project = {
-    name: 'placeholder', 
-    id: match.params.projectId
-  }
-
-  // set project to equal an API request action 
-
-  return(
-    <div>
-      <h2>{project.name} {project.id}</h2>
-    </div>
-  )
 }
 
 const mapStateToProps = ({ projects }) => ({ projects })
