@@ -10,7 +10,7 @@ class App extends Component {
     return(
       <Router>
         <div>
-          <NavLink to='/'>Home</NavLink>
+          <NavLink exact to='/'>Home</NavLink>
           <NavLink to='/projects'>Projects </NavLink>
           <NavLink to='/about'>About</NavLink>
 
