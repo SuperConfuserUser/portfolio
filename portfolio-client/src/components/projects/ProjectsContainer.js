@@ -6,7 +6,7 @@ import Projects from './Projects'
 import Project from './Project'
 import ProjectForm from './ProjectForm'
 import ProjectUpdateForm from './ProjectUpdateForm'
-import { getProjects, deleteProject } from '../../actions/projectsActions'
+import { getProjects } from '../../actions/projectsActions'
 
 class ProjectsContainer extends Component {
   componentDidMount() {
@@ -39,7 +39,4 @@ class ProjectsContainer extends Component {
 
 const mapStateToProps = ({ projects }) => ({ projects })
 
-export default connect(mapStateToProps, { 
-  getProjects,
-  deleteProject
-})(ProjectsContainer)
+export default connect(mapStateToProps, { getProjects})(ProjectsContainer)
