@@ -6,6 +6,12 @@ export const setProject = project => {
   }
 }
 
+export const resetProject = () => {
+  return {
+    type: 'RESET_PROJECT'
+  }
+}
+
 // ** Async Actions **
 export const getProject = (id) => {
   return dispatch => {

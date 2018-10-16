@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getProject } from '../../actions/projectActions'
+import { getProject, resetProject } from '../../actions/projectActions'
 import ProjectAdminButtons from './ProjectAdminButtons'
 
 class Project extends Component {
+
+  constructor(props) {
+    super(props)
+    this.props.resetProject()
+  }
 
   componentDidMount() {
     const { getProject, match } = this.props
@@ -27,4 +32,4 @@ class Project extends Component {
 
 const mapStateToProps = ({ project }) => ({ project })
 
-export default connect(mapStateToProps, { getProject })(Project)
+export default connect(mapStateToProps, { getProject, resetProject })(Project)
