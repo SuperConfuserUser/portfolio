@@ -70,7 +70,6 @@ export const updateProject = project => {
       .then(response => response.json())
       .then(project => {
         dispatch(updateProjectSuccess(project))
-        dispatch(resetProjectForm())        
         return project
       })
       .catch(({ error }) => console.log(error))
