@@ -14,13 +14,3 @@ export const resetProjectForm = () => {
 
 
 // ** Async Actions **
-export const getProjectFormData = (id) => {
-  return dispatch => {
-    return fetch(`/api/projects/` + id)
-      .then(response => response.json())
-      .then(project => {
-        dispatch(updateProjectFormData(project)
-      )})
-      .catch(({ error }) => console.log(error))
-  }
-}

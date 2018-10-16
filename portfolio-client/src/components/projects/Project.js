@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getProject } from '../../actions/projectActions'
 
 class Project extends Component {
@@ -24,4 +25,4 @@ class Project extends Component {
 
 const mapStateToProps = ({ project }) => ({ project })
 
-export default connect(mapStateToProps, { getProject })(Project)
+export default withRouter(connect(mapStateToProps, { getProject, deleteProject })(Project))
