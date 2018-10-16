@@ -1,3 +1,4 @@
+import { resetProjectForm } from './projectFormActions'
 
 // ** Action Creators ** 
 export const setProjects = projects => {
@@ -50,6 +51,7 @@ export const createProject = project => {
       .then(response => response.json())
       .then(project => {
         dispatch(addProject(project))
+        dispatch(resetProjectForm())
         return project
       })
       .catch(({ error }) => console.log(error))

@@ -14,7 +14,6 @@ class ProjectForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.props.resetProjectForm()
   }
 
   handleChange = event => {

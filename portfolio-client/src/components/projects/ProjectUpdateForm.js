@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { getProject } from '../../actions/projectActions'
-import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
+import { updateProjectFormData, resetProjectForm, getProjectFormData } from '../../actions/projectFormActions'
 import { updateProject } from '../../actions/projectsActions'
 
 class ProjectUpdateForm extends Component {
@@ -15,12 +14,11 @@ class ProjectUpdateForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.props.resetProjectForm()
   }
 
   componentDidMount() {
-    const { getProject, match } = this.props
-    getProject(match.params.projectId)
+    const { getProjectFormData, match } = this.props
+    getProjectFormData(match.params.projectId)
   }
 
   handleChange = event => {
@@ -90,8 +88,8 @@ class ProjectUpdateForm extends Component {
 const mapStateToProps = ({ projectFormData }) => ({ projectFormData })
 
 export default connect(mapStateToProps, { 
-  getProject,
   updateProjectFormData,
   resetProjectForm,
-  updateProject
+  updateProject,
+  getProjectFormData 
 })(ProjectUpdateForm)
