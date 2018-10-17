@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
+import ProjectAdminControls from './ProjectAdminControls'
 import Projects from './Projects'
 import Project from './Project'
 import ProjectForm from './ProjectForm'
@@ -19,7 +20,7 @@ class ProjectsContainer extends Component {
     return (
       <div className="ProjectList">
         <h1>Projects</h1>
-       
+        <ProjectAdminControls />
         <Switch>
           <Route exact path={match.path} render={(props) => (
             <Projects
