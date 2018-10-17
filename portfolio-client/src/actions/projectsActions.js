@@ -101,6 +101,7 @@ export const toggleHidden = project => {
       .then(response => response.json())
       .then(project => {
         dispatch(updateProjectSuccess(project))
+        return project
       })
       .catch(({ error }) => console.log(error))
   }
