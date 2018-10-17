@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard'
 
 const Projects = (props) => {
 
-  const { match, projects } = props
+  const { projects } = props
 
   const renderProjects = projects.map(project=> 
       <ProjectCard 
