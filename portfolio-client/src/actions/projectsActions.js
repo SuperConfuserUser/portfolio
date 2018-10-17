@@ -96,7 +96,9 @@ export const toggleHidden = project => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ project: { hidden: !project.hidden } })
+      body: JSON.stringify({ project: 
+        { hidden: !project.hidden } 
+      })
     })
       .then(response => response.json())
       .then(project => {
