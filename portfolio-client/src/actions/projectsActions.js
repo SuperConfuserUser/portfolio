@@ -83,8 +83,24 @@ export const deleteProject = id => {
     })
       .then(response => response.json())
       .then(({ message }) => {
-        console.log(message)
         dispatch(deleteProjectSuccess(id))
+      })
+      .catch(({ error }) => console.log(error))
+  }
+}
+
+export const toggleHidden = project => {
+  return dispatch => {
+    return fetch('/api/projects/' + project.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ project: { hidden: !project.hidden } })
+    })
+      .then(response => response.json())
+      .then(project => {
+        dispatch(updateProjectSuccess(project))
       })
       .catch(({ error }) => console.log(error))
   }

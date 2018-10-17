@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import ProjectAdminButtons from './ProjectAdminButtons'
 
 const ProjectCard = (props) => {
-  const { id, name, img_url, description} = props.project
+  const { id, name, img_url, description, hidden } = props.project
   const { match } = props
 
   return (
@@ -13,7 +13,7 @@ const ProjectCard = (props) => {
         <img src={img_url} alt={name} />
         <p>{description}</p>
       </Link>
-      <ProjectAdminButtons id={id} />
+      <ProjectAdminButtons project={props.project} />
       <br />
     </div>
   )
