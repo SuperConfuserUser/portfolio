@@ -1,14 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import { toggleShowHidden } from '../../actions/adminActions'
 
-function ProjectAdminControls(props) {
-  return (
-    <div>
-      Admin: 
-      <Link to={`${props.match.url}/new`}>+</Link>
+class ProjectAdminControls extends Component {
+  
+  constructor(props) {
+    super(props)
+    this.handleShowHidden = this.handleShowHidden.bind(this)
+  }
+  
+  handleShowHidden = () => {
+    this.props.toggleShowHidden()
+  }
 
-    </div>
-  )
+  render() {
+    const { match, admin } = this.props
+
+    return (
+      <div>
+        Admin: 
+        <Link to={`${match.url}/new`}>+</Link>
+        <button onClick={this.handleShowHidden}>{admin.showHidden ? 'Hide Hidden' : 'Show Hidden'}</button>
+      </div>
+    )
+  }
 }
 
-export default withRouter(ProjectAdminControls)
+const mapStateToProps = ({ admin }) => ({ admin })
+
+export default withRouter(
+  connect(mapStateToProps, { toggleShowHidden })(ProjectAdminControls)
+)
