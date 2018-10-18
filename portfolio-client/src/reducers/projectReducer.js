@@ -1,7 +1,8 @@
 const initialState = {
   name: '',
   img_url: '',
-  description: ''
+  description: '',
+  hidden: false
 }
 
 export default (state = initialState, action) => {

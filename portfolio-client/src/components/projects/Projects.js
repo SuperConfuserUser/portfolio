@@ -3,13 +3,12 @@ import ProjectCard from './ProjectCard'
 
 const Projects = (props) => {
 
-  const { projects } = props
+  const { projects, admin } = props
 
-  const renderProjects = projects.map(project=> 
-      <ProjectCard 
-        key={project.id} 
-        project={project} 
-      />
+  const shownProjects = admin.showHidden ? projects : projects.filter(project => !project.hidden)
+
+  const renderProjects = shownProjects.map(project=> 
+      <ProjectCard key={project.id} project={project} />
   )
 
   return (

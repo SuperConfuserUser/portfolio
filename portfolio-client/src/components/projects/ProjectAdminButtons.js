@@ -19,11 +19,11 @@ class ProjectAdminButtons extends Component {
   }
   
   handleHide = () => {
-    const { toggleHidden, project } = this.props 
+    const { toggleHidden, project, admin } = this.props 
     toggleHidden(project)
       .then(project => {
-        if(project.hidden) {
-          this.goBack()
+        if(project.hidden && !admin.showHidden) {
+          return this.goBack()
       }})
     }
 
@@ -38,10 +38,6 @@ class ProjectAdminButtons extends Component {
 
     const { hidden } = this.props.project
 
-    if(hidden) {
-      this.goBack()
-    }
-
     return (
       <div>
         <Link to={`/projects/${this.props.id}/edit`}><button>Edit</button></Link> 
@@ -52,6 +48,8 @@ class ProjectAdminButtons extends Component {
   }
 }
 
+const mapStateToProps = ({ admin }) => ({ admin })
+
 export default withRouter(
-  connect(null, { deleteProject, toggleHidden })(ProjectAdminButtons)
+  connect(mapStateToProps, { deleteProject, toggleHidden })(ProjectAdminButtons)
 )
