@@ -8,9 +8,12 @@ export default (state = initialState, action) => {
   
     case 'RESET_ADMIN':
       return initialState
-
+    
+    case 'AUTHORIZE_ADMIN':
+      return { ...state, auth: true }
+    
     case 'TOGGLE_SHOW_HIDDEN':
-      return {...state, showHidden: !state.showHidden }
+      return { ...state, showHidden: !state.showHidden }
 
     default:
       return state

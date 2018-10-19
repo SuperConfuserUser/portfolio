@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
 import ProjectsContainer from './projects/ProjectsContainer'
+import AdminContainer from './admin/AdminContainer'
+import AdminNav from './admin/AdminNav'
+import Login from './admin/Login'
 
 class App extends Component {
   render() {
@@ -14,14 +17,17 @@ class App extends Component {
           <NavLink to='/projects'>Projects </NavLink>
           <NavLink to='/about'>About</NavLink>
 
+          <AdminNav /> <br />
+      
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/projects' component={ProjectsContainer} />
+          <Route path='/admin' component={AdminContainer} />
+          <Route path='/login' component={Login} />
         </div>
       </Router>
     )
   }
-  
 }
 
-export default App;
+export default App
