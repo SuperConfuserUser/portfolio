@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import AdminDashboard from './AdminDashboard'
-import Login from './Login'
 
 const PrivateRoute = ({ component: Component, admin: admin, ...rest }) => (
   <Route {...rest} render={(props) => (

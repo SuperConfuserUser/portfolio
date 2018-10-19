@@ -28,7 +28,7 @@ export class ProjectContainer extends Component {
 
 const HiddenRoute = ({ component: Component, project: project, admin, ...rest }) => (
   <Route {...rest} render={(props) => (
-    project.hidden ?
+    project.hidden && !admin.showHidden ?
     <Redirect to='/projects' /> :
     <Component {...props} project={project} />
   )} />

@@ -20,7 +20,7 @@ class ProjectAdminControls extends Component {
     return (
       <div>
         Admin: 
-        <Link to={`${match.url}/new`}>+</Link>
+        <Link to='projects/new'>+</Link>
         <button onClick={this.handleShowHidden}>{admin.showHidden ? 'Hide Hidden' : 'Show Hidden'}</button>
       </div>
     )

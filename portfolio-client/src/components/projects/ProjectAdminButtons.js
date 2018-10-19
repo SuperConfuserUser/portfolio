@@ -36,11 +36,11 @@ class ProjectAdminButtons extends Component {
 
   render() {
 
-    const { hidden } = this.props.project
+    const { hidden, id } = this.props.project
 
     return (
       <div>
-        <Link to={`/projects/${this.props.id}/edit`}><button>Edit</button></Link> 
+        <Link to={`/projects/${id}/edit`}><button>Edit</button></Link> 
         <button onClick={this.handleHide}>{hidden ? 'Unhide' : 'Hide'}</button> 
         <button onClick={this.handleDelete}>X</button>
       </div>
