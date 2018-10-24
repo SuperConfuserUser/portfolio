@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ContactForm from './ContactForm'
 import { connect } from 'react-redux'
+import ContactForm from './ContactForm'
+import ContactFormResponse from './ContactFormResponse'
 import { updateMessage, sendMessage, resetContactForm } from '../../actions/contactFormActions'
 
 export class ContactFormContainer extends Component {
@@ -25,12 +26,13 @@ export class ContactFormContainer extends Component {
       <div>
         <h3>Let's Chat</h3>
         {successResponse ? 
-          <p>{successResponse}</p> : 
+          <ContactFormResponse response={successResponse} /> : 
           <ContactForm 
             contactFormData={message} 
             updateMessage={updateMessage} 
             sendMessage={sendMessage} 
-        />}
+          />
+        }
       </div>
     )
   }
