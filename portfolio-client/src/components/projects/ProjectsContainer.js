@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-
-import ProjectAdminControls from './ProjectAdminControls'
 import Projects from './Projects'
 import ProjectContainer from './ProjectContainer'
 import ProjectForm from './ProjectForm'
@@ -10,28 +9,40 @@ import ProjectUpdateForm from './ProjectUpdateForm'
 import { getProjects } from '../../actions/projectsActions'
 
 class ProjectsContainer extends Component {
+
+  static PropTypes = {
+    projects: PropTypes.array.isRequired,
+    admin: PropTypes.object.isRequired,
+    getProjects: PropTypes.func.isRequired
+  }
+
   componentDidMount() {
-    this.props.getProjects()
+    const { projects, getProjects } = this.props
+
+    if(projects.length === 0) {
+      getProjects()
+    }
   }
 
   render() {
-    const { match, projects, admin, deleteProject } = this.props
+    const { match, projects, admin } = this.props
+    const shownProjects = admin.showHidden ? projects : projects.filter(p => !p.hidden)
 
     return (
       <div className="ProjectList">
         <h1>Projects</h1>
-        <ProjectAdminControls />
         <Switch>
           <Route exact path={match.path} render={(props) => (
             <Projects
               {...props}
-              projects={projects} 
-              deleteProject={deleteProject}
-              admin={admin}
+              projects={shownProjects} 
             />
           )} />
+
+      {/* protect these routes */}
           <Route path={`${match.path}/new`} component={ProjectForm} />
-          <Route path={`${match.path}/:projectId/edit`} component={ProjectUpdateForm} />
+          <Route path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} />
+      {/* protect these routes */}
           <Route path={`${match.path}/:projectId`} component={ProjectContainer} />
         </Switch>
       </div>
@@ -39,6 +50,9 @@ class ProjectsContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ projects, project, admin }) => ({ projects, project, admin })
+const mapStateToProps = ({ projects, admin }) => ({ projects, admin })
 
-export default connect(mapStateToProps, { getProjects})(ProjectsContainer)
+export default connect(
+  mapStateToProps, { 
+    getProjects 
+  })(ProjectsContainer)

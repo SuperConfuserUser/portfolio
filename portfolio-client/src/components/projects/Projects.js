@@ -1,14 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ProjectCard from './ProjectCard'
 
-const Projects = (props) => {
+const Projects = props => {
 
-  const { projects, admin } = props
+  const { projects } = props
 
-  const shownProjects = admin.showHidden ? projects : projects.filter(project => !project.hidden)
-
-  const renderProjects = shownProjects.map(project=> 
-      <ProjectCard key={project.id} project={project} />
+  const renderProjects = projects.map(project=> 
+      <ProjectCard 
+        key={project.id}
+        project={project} 
+      />
   )
 
   return (
@@ -18,4 +20,10 @@ const Projects = (props) => {
   )
 }
 
+Projects.propTypes = {
+  projects: PropTypes.array.isRequired
+}
+
 export default Projects
+
+
