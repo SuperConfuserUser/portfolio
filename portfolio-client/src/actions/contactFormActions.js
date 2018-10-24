@@ -1,5 +1,5 @@
 // ** Action Creators ** 
-export const updateContactFormData = message => {
+export const updateMessage = message => {
   return {
     type: 'UPDATED_CONTACT_FORM',
     message
@@ -9,6 +9,13 @@ export const updateContactFormData = message => {
 export const resetContactForm = () => {
   return {
     type: 'RESET_CONTACT_FORM'
+  }
+}
+
+export const setSuccessResponse = response => {
+  return {
+    type: 'SET_SUCCESS_RESPONSE',
+    response
   }
 }
 
@@ -23,7 +30,9 @@ export const sendMessage = message => {
       body: JSON.stringify({ message: message })
     })
       .then(response => response.json())
-      .then(({ message }) => message)
+      .then(({ message }) => 
+        dispatch(setSuccessResponse(message))
+      )
       .catch(({ error }) => console.log(error))
   }
 }

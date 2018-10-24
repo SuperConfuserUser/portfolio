@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-import { updateContactFormData, resetContactForm, sendMessage } from '../actions/contactFormActions'
+import PropTypes from 'prop-types'
 
 class ContactForm extends Component {
+
+  static propTypes = {
+    contactFormData: PropTypes.object.isRequired,
+    updateMessage: PropTypes.func.isRequired,
+    sendMessage: PropTypes.func.isRequired,
+  }
 
   constructor(props) {
     super(props)
     this.state = {
-      successMessage: '',
       name: '',
       email: '',
       subject: '',
@@ -20,16 +23,14 @@ class ContactForm extends Component {
   handleChange = event => {
     const { name, type, checked, value } = event.target
     const val = type === 'checkbox' ? checked : value
-
-    const { updateContactFormData, contactFormData } = this.props
-
+    const { updateMessage, contactFormData } = this.props
     const currentMessage = { ...contactFormData,  [name]:val }
 
     this.setState(() => {
-      return { [name]: value }
+      return { [name]: val }
     })
     
-    updateContactFormData(currentMessage)
+    updateMessage(currentMessage)
   }
 
   handleSubmit = event => {
@@ -37,29 +38,13 @@ class ContactForm extends Component {
 
     event.preventDefault()
     sendMessage(contactFormData)
-      .then(message => {this.setState({
-          successMessage: message
-        })
-      })
-  }
-
-  componentWillUnmount() {
-    this.props.resetContactForm()
   }
 
   render() {
-    const { successMessage, name, email, subject, body, copy } = this.state
-
-    if(successMessage) {
-      return <div>
-        <h3>Say Hello</h3>
-        <p>{successMessage}</p>
-      </div>
-    }
+    const { name, email, subject, body, copy } = this.props.contactFormData
 
     return (
       <div>
-        <h3>Say Hello</h3>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>
@@ -113,7 +98,5 @@ class ContactForm extends Component {
   }
 }
 
-const mapStateToProps = ({ contactFormData }) => ({ contactFormData })
-
-export default connect(mapStateToProps, { updateContactFormData, resetContactForm, sendMessage })(ContactForm)
+export default ContactForm
 
