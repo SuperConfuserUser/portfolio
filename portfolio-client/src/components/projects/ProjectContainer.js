@@ -7,7 +7,7 @@ import Project from './Project'
 export class ProjectContainer extends Component {
 
   componentDidMount() {
-    const { getProject, match, history, admin } = this.props
+    const { getProject, match } = this.props
     getProject(match.params.projectId)
   }
 
@@ -26,7 +26,7 @@ export class ProjectContainer extends Component {
   }
 }
 
-const HiddenRoute = ({ component: Component, project: project, admin, ...rest }) => (
+const HiddenRoute = ({ component: Component, project, admin, ...rest }) => (
   <Route {...rest} render={(props) => (
     project.hidden && !admin.showHidden ?
     <Redirect to='/projects' /> :

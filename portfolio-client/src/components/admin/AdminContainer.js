@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import AdminDashboard from './AdminDashboard'
 
-const PrivateRoute = ({ component: Component, admin: admin, ...rest }) => (
+const PrivateRoute = ({ component: Component, admin, ...rest }) => (
   <Route {...rest} render={(props) => (
     admin.auth ?
     <Component {...props} /> :

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import ProjectAdminControls from './ProjectAdminControls'
 import Projects from './Projects'
-import Project from './Project'
 import ProjectContainer from './ProjectContainer'
 import ProjectForm from './ProjectForm'
 import ProjectUpdateForm from './ProjectUpdateForm'
@@ -16,7 +15,7 @@ class ProjectsContainer extends Component {
   }
 
   render() {
-    const { match, projects, project, admin, deleteProject } = this.props
+    const { match, projects, admin, deleteProject } = this.props
 
     return (
       <div className="ProjectList">

@@ -15,7 +15,7 @@ class ProjectAdminControls extends Component {
   }
 
   render() {
-    const { match, admin } = this.props
+    const { admin } = this.props
 
     return (
       <div>

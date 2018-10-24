@@ -6,7 +6,7 @@ import { authorizeAdmin } from '../../actions/adminActions'
 class Login extends Component {
   
   handleLogin = () => {
-    const { admin, authorizeAdmin } = this.props
+    const { authorizeAdmin } = this.props
     authorizeAdmin()
   }
 

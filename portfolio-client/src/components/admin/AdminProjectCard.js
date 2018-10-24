@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectAdminButtons from '../projects/ProjectAdminButtons'
-import { Link, Redirect, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
  
 function AdminProjectCard(props) {
   const { project } = props
