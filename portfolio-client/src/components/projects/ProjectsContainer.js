@@ -27,12 +27,9 @@ class ProjectsContainer extends Component {
       <div className="ProjectList">
         <h1>Projects</h1>
         <Switch>
-          <Route exact path={match.path} render={(props) => (
-            <Projects
-              {...props}
-              projects={shownProjects} 
-            />
-          )} />
+          <Route exact path={match.path} render={(props) =>
+            <Projects {...props} projects={shownProjects} />}
+          />
           <AdminRoute path={`${match.path}/new`} component={ProjectForm} admin={admin} />
           <AdminRoute path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} admin={admin} />
           <Route path={`${match.path}/:projectId`} component={ProjectContainer} />
@@ -48,7 +45,7 @@ class ProjectsContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ projects, admin }) => ({ projects, admin })
+const mapStateToProps = ({ projects }) => ({ projects })
 
 export default connect(
   mapStateToProps, { 

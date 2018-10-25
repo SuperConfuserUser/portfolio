@@ -28,9 +28,9 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
           <Route path='/contact' component={ContactFormContainer} />
-          <Route path='/projects' component={ProjectsContainer} />
-          <Route path='/admin' component={AdminContainer} />
-          <Route path='/login' component={Login} />
+          <Route path='/projects' render={(props) =>
+            <ProjectsContainer {...props} admin={admin} />} 
+          />
         </div>
       </Router>
     )
