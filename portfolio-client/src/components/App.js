@@ -19,12 +19,13 @@ class App extends Component {
     return(      
       <Router>
         <div>
-          <NavLink exact to='/'>Home</NavLink>
-          <NavLink to='/projects'>Projects </NavLink>
-          <NavLink to='/about'>About</NavLink>
+          <NavLink exact to='/'>Home</NavLink>&nbsp;
+          <NavLink to='/projects'>Projects </NavLink>&nbsp;
+          <NavLink to='/about'>About</NavLink>&nbsp;
           <NavLink to='/contact'>Contact</NavLink>
 
-          {admin.auth && <AdminNav />}
+          {/* {admin.auth && <AdminNav admin={admin} />} */}
+          <AdminNav admin={admin} />
       
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />

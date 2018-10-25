@@ -8,11 +8,14 @@ function AdminNav(props) {
     props.logoutAdmin()
   }
 
+  const { admin } = props
+
   return (
     <div>
       <br />
-      <NavLink to='/admin'>Unicorn</NavLink>
-      <button onClick={handleLogout} >Logout</button>
+      <NavLink to='/admin'>Dashboard</NavLink> &nbsp;
+      {admin.auth && 
+        <button onClick={handleLogout} >Logout</button>}
     </div>
   )
 }

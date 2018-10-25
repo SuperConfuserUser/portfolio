@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import AdminRoute from './../admin/AdminRoute'
+import ProjectAdminControls from './ProjectAdminControls'
 import Projects from './Projects'
 import ProjectContainer from './ProjectContainer'
 import ProjectForm from './ProjectForm'
@@ -24,6 +25,7 @@ class ProjectsContainer extends Component {
 
     return (
       <div className="ProjectList">
+        {admin.auth && <ProjectAdminControls />}
         <h1>Projects</h1>
         <Switch>
           <Route exact path={match.path} render={(props) =>
