@@ -5,7 +5,8 @@ const initialState = {
     email: '',
     subject: '',
     body: '',
-    copy: false
+    copy: false,
+    errors: {}
   }
 }
 

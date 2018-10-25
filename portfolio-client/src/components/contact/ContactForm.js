@@ -54,6 +54,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={name}
             />
+            {errors.name}
           </div>
           <div>
             <label htmlFor="email">Email</label>
@@ -63,6 +64,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={email}
             />
+            {errors.email}
           </div>
           <div>
             <label htmlFor="subject">Subject</label>
@@ -80,6 +82,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={body}
             />
+            {errors.body}
           </div>
           <div>
             <label htmlFor="copy">Want a copy?</label>
@@ -93,7 +96,6 @@ class ContactForm extends Component {
           <br />
           <input type="submit" value="Send" />
         </form>
-        {errors && 'SOMETHING WENT HORRIBLY WRONG!'}
       </div>
     )
   }
