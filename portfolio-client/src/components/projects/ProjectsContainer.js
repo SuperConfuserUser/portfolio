@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
+import AdminRoute from './../admin/AdminRoute'
 import Projects from './Projects'
 import ProjectContainer from './ProjectContainer'
 import ProjectForm from './ProjectForm'
@@ -38,11 +39,8 @@ class ProjectsContainer extends Component {
               projects={shownProjects} 
             />
           )} />
-
-      {/* protect these routes */}
-          <Route path={`${match.path}/new`} component={ProjectForm} />
-          <Route path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} />
-      {/* protect these routes */}
+          <AdminRoute path={`${match.path}/new`} component={ProjectForm} admin={admin} />
+          <AdminRoute path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} admin={admin} />
           <Route path={`${match.path}/:projectId`} component={ProjectContainer} />
         </Switch>
       </div>
