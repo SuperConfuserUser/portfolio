@@ -13,14 +13,13 @@ class ProjectsContainer extends Component {
 
   componentDidMount() {
     const { projects, getProjects } = this.props
-
     if(projects.length === 0) {
       getProjects()
     }
   }
 
   render() {
-    const { match, projects, admin } = this.props
+    const { match, admin, projects } = this.props
     const shownProjects = admin.showHidden ? projects : projects.filter(p => !p.hidden)
 
     return (
@@ -32,7 +31,9 @@ class ProjectsContainer extends Component {
           />
           <AdminRoute path={`${match.path}/new`} component={ProjectForm} admin={admin} />
           <AdminRoute path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} admin={admin} />
-          <Route path={`${match.path}/:projectId`} component={ProjectContainer} />
+          <Route path={`${match.path}/:projectId`} render={props =>
+            <ProjectContainer {...props} admin={admin} />}
+          />
         </Switch>
       </div>
     )

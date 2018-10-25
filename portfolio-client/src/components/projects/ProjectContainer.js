@@ -34,6 +34,6 @@ const HiddenRoute = ({ component: Component, project, admin, ...rest }) => (
   )} />
 )
 
-const mapStateToProps = ({ project, admin }) => ({ project, admin })
+const mapStateToProps = ({ project }) => ({ project })
 
 export default connect(mapStateToProps, { getProject, resetProject })(ProjectContainer)
