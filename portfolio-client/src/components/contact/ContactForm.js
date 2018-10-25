@@ -96,7 +96,6 @@ class ContactForm extends Component {
     updateMessage: PropTypes.func.isRequired,
     sendMessage: PropTypes.func.isRequired,
   }
-  
 }
 
 export default ContactForm
