@@ -41,7 +41,7 @@ class ContactForm extends Component {
   }
 
   render() {
-    const { name, email, subject, body, copy } = this.props.contactFormData
+    const { name, email, subject, body, copy, errors } = this.props.contactFormData
 
     return (
       <div>
@@ -93,6 +93,7 @@ class ContactForm extends Component {
           <br />
           <input type="submit" value="Send" />
         </form>
+        {errors && 'SOMETHING WENT HORRIBLY WRONG!'}
       </div>
     )
   }
