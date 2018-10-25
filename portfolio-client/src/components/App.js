@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Home from './Home'
 import About from './About'
@@ -10,7 +11,10 @@ import AdminNav from './admin/AdminNav'
 import Login from './admin/Login'
 
 class App extends Component {
+
   render() {
+    const { admin } = this.props
+
     return(
       <Router>
         <div>
@@ -19,7 +23,7 @@ class App extends Component {
           <NavLink to='/about'>About</NavLink>
           <NavLink to='/contact'>Contact</NavLink>
 
-          <AdminNav /> <br />
+          {admin.auth && <AdminNav />}
       
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
@@ -33,4 +37,6 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = ({ admin }) => ({ admin })
+
+export default connect(mapStateToProps)(App)
