@@ -9,7 +9,7 @@ class Api::MessagesController < ApplicationController
 
       render json: { success: "Thanks #{message.name}! Your message been sent. I'll get back to you soon." }
     else
-      render json: message, status: 400
+      render json: message, status: 422
     end
   end
 
