@@ -19,7 +19,7 @@ class MessageMailer < ApplicationMailer
     @subject = message.subject.empty? ? '' : " - #{message.subject}"
 
     mail  to: @email, 
-          subject: "Copy of your message#{@subject}"
+          subject: "Copy of your message to Chely#{@subject}"
   end
 
   private
