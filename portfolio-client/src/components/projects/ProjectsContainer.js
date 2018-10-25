@@ -27,10 +27,12 @@ class ProjectsContainer extends Component {
         <h1>Projects</h1>
         <Switch>
           <Route exact path={match.path} render={(props) =>
-            <Projects {...props} projects={shownProjects} />}
+            <Projects {...props} projects={shownProjects} admin={admin} />}
           />
-          <AdminRoute path={`${match.path}/new`} component={ProjectForm} admin={admin} />
-          <AdminRoute path={`${match.path}/edit/:projectId`} component={ProjectUpdateForm} admin={admin} />
+          <AdminRoute path={`${match.path}/new`} component=
+            {ProjectForm} admin={admin} />
+          <AdminRoute path={`${match.path}/edit/:projectId`} component=
+            {ProjectUpdateForm} admin={admin} />
           <Route path={`${match.path}/:projectId`} render={props =>
             <ProjectContainer {...props} admin={admin} />}
           />

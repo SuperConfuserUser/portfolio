@@ -1,16 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ProjectCard from './ProjectCard'
+import ProjectAdminButtons from './ProjectAdminButtons'
 
 const Projects = props => {
 
-  const { projects } = props
+  const { projects, admin } = props
 
   const renderProjects = projects.map(project=> 
-      <ProjectCard 
-        key={project.id}
-        project={project} 
-      />
+    <div key={project.id}>
+      <ProjectCard project={project} />
+      {admin.auth &&
+        <ProjectAdminButtons project={project} admin={admin} />}
+      <br />
+    </div>
   )
 
   return (
