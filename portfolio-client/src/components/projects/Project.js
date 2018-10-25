@@ -1,18 +1,20 @@
 import React from 'react'
-import ProjectAdminButtons from './ProjectAdminButtons'
+import PropTypes from 'prop-types'
 
 function Project(props) {
-  const { project } = props
+  const { name, img_url, description } = props.project
   
   return (
     <div>
-      <ProjectAdminButtons project={project} />
-
-      <h2>{project.name}</h2>
-      <img src={project.img_url} alt={project.name} />
-      <p>{project.description}</p>
+      <h2>{name}</h2>
+      <img src={img_url} alt={name} />
+      <p>{description}</p>
     </div>
   )
+}
+
+Project.propTypes = {
+  project: PropTypes.object.isRequired
 }
 
 export default Project

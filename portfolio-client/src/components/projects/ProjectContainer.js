@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ProjectHiddenRoute from './ProjectHiddenRoute'
-import { getProject, resetProject } from '../../actions/projectActions'
 import Project from './Project'
+import ProjectAdminButtons from './ProjectAdminButtons'
+import { getProject, resetProject } from '../../actions/projectActions'
+
 
 export class ProjectContainer extends Component {
 
@@ -20,6 +22,9 @@ export class ProjectContainer extends Component {
 
     return (
       <div>
+        {admin.auth && 
+          <ProjectAdminButtons project={project} admin={admin} />}
+
         <ProjectHiddenRoute exact path={match.path} component={Project} project={project} admin={admin} />
       </div>
     )

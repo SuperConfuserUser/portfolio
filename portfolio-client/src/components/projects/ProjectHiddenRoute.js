@@ -10,7 +10,7 @@ const ProjectHiddenRoute = ({ component: Component, project, admin, ...rest }) =
         project.hidden && !admin.showHidden ?
           //TODO: use history to redirect back to prev page. can also come from the dashboard
           <Redirect to='/projects' /> :
-          <Component {...props} project={project} admin={admin} />
+          <Component {...props} project={project} />
       }
     />
   )
