@@ -7,14 +7,6 @@ import { updateMessage, sendMessage, resetContactForm } from '../../actions/cont
 
 export class ContactFormContainer extends Component {
 
-  static propTypes = {
-    successResponse: PropTypes.string.isRequired,
-    message: PropTypes.object.isRequired,
-    updateMessage: PropTypes.func.isRequired,
-    sendMessage: PropTypes.func.isRequired,
-    resetContactForm: PropTypes.func.isRequired
-  }
-
   componentWillUnmount() {
     this.props.resetContactForm()
   }
@@ -35,6 +27,14 @@ export class ContactFormContainer extends Component {
         }
       </div>
     )
+  }
+
+  static propTypes = {
+    successResponse: PropTypes.string.isRequired,
+    message: PropTypes.object.isRequired,
+    updateMessage: PropTypes.func.isRequired,
+    sendMessage: PropTypes.func.isRequired,
+    resetContactForm: PropTypes.func.isRequired
   }
 }
 

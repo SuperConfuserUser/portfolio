@@ -3,12 +3,6 @@ import PropTypes from 'prop-types'
 
 class ContactForm extends Component {
 
-  static propTypes = {
-    contactFormData: PropTypes.object.isRequired,
-    updateMessage: PropTypes.func.isRequired,
-    sendMessage: PropTypes.func.isRequired,
-  }
-
   constructor(props) {
     super(props)
     this.state = {
@@ -96,6 +90,13 @@ class ContactForm extends Component {
       </div>
     )
   }
+
+  static propTypes = {
+    contactFormData: PropTypes.object.isRequired,
+    updateMessage: PropTypes.func.isRequired,
+    sendMessage: PropTypes.func.isRequired,
+  }
+  
 }
 
 export default ContactForm

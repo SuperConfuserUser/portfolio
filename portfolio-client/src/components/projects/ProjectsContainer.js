@@ -11,12 +11,6 @@ import { getProjects } from '../../actions/projectsActions'
 
 class ProjectsContainer extends Component {
 
-  static PropTypes = {
-    projects: PropTypes.array.isRequired,
-    admin: PropTypes.object.isRequired,
-    getProjects: PropTypes.func.isRequired
-  }
-
   componentDidMount() {
     const { projects, getProjects } = this.props
 
@@ -45,6 +39,12 @@ class ProjectsContainer extends Component {
         </Switch>
       </div>
     )
+  }
+
+  static propTypes = {
+    projects: PropTypes.array.isRequired,
+    admin: PropTypes.object.isRequired,
+    getProjects: PropTypes.func.isRequired
   }
 }
 
