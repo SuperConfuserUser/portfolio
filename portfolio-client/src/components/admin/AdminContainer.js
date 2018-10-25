@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AdminDashboard from './AdminDashboard'
-
+import AdminProjectsContainer from './AdminProjectsContainer'
+import ProjectAdminControls from '../projects/ProjectAdminControls'
 
 const AdminContainer = (props) => {
   const { admin } = props
   return (
     <div>
-      <AdminDashboard admin={admin} />
+      <h3>Admin DashBoard</h3>
+      <ProjectAdminControls />
+      <AdminProjectsContainer admin={admin} />
     </div>
   )
 }
