@@ -30,6 +30,8 @@ export const deleteProjectSuccess = id => {
 }
 
 
+
+
 // ** Async Actions **
 export const getProjects = () => {
   return dispatch => {
@@ -50,11 +52,15 @@ export const createProject = project => {
     })
       .then(response => response.json())
       .then(project => {
-        dispatch(addProject(project))
-        dispatch(resetProjectForm())
-        return project
+        if(project.errors) {
+          console.log('project errors: ', project.errors)
+        } else {
+          dispatch(addProject(project))
+          dispatch(resetProjectForm())
+          return project.id  
+        }
       })
-      .catch(({ error }) => console.log(error))
+      .catch(error => console.log('project form error: ', error))
   }
 }
 

@@ -13,9 +13,10 @@ class Api::ProjectsController < ApplicationController
     def create
       project = Project.new(project_params)
       if project.save
+        # project.save
         render json: project
       else
-        render json: { message: project.errors}, status: 400
+        render json: { errors: project.errors }, status: 422
       end
     end
 
@@ -23,7 +24,7 @@ class Api::ProjectsController < ApplicationController
       if @project.update(project_params)
         render json: @project
       else
-        render json: { message: project.errors}, status: 400
+        render json: { message: project.errors}, status: 422
       end
     end
 
