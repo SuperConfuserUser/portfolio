@@ -6,7 +6,10 @@ import AdminProjects from './AdminProjects'
 
 class AdminProjectsContainer extends Component {
   componentDidMount() {
-    this.props.getProjects()
+    const { projects, getProjects } = this.props
+    if(projects.length === 0) {
+      getProjects()
+    }
   }
 
   render() {
@@ -20,6 +23,12 @@ class AdminProjectsContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ projects, admin }) => ({ projects, admin })
+const mapStateToProps = ({ projects }) => ({ projects })
 
-export default connect(mapStateToProps, { getProjects, deleteProject, updateProject, toggleShowHidden })(AdminProjectsContainer)
+export default connect(
+  mapStateToProps, { 
+    getProjects,
+    deleteProject,
+    updateProject,
+    toggleShowHidden 
+  })(AdminProjectsContainer)
