@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ProjectHiddenRoute from './ProjectHiddenRoute'
 import Project from './Project'
@@ -28,6 +29,13 @@ export class ProjectContainer extends Component {
         <ProjectHiddenRoute exact path={match.path} component={Project} project={project} admin={admin} />
       </div>
     )
+  }
+
+  static propTypes = {
+    project: PropTypes.object.isRequired,
+    admin: PropTypes.object.isRequired,
+    getProject: PropTypes.func.isRequired,
+    resetProject: PropTypes.func.isRequired
   }
 }
 
