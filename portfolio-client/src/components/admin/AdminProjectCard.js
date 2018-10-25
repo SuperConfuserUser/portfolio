@@ -1,28 +1,33 @@
 import React from 'react'
-import ProjectAdminButtons from '../projects/ProjectAdminButtons'
+import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
  
 function AdminProjectCard(props) {
-  const { project } = props
+  const { project, admin, history, toggleShowHidden } = props
 
   const handleViewHidden = () => {
-    const { admin, toggleShowHidden, history } = props
     if(!admin.showHidden) {
       toggleShowHidden()
     }
+
     history.push(`projects/${project.id}`)
   }
 
   return (
-    <li>
+    <div>
       {project.name} - {project.hidden ? 
         <button onClick={handleViewHidden}>view hidden</button> : 
         <Link to={`projects/${project.id}`}>view</Link>  
       }
-      
-      <ProjectAdminButtons project={project} />
-    </li>
+    </div>
   )
+}
+
+AdminProjectCard.propTypes = {
+  project: PropTypes.object.isRequired,
+  admin: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  toggleShowHidden: PropTypes.func.isRequired
 }
 
 export default withRouter(AdminProjectCard)
