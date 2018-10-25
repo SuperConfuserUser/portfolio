@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { deleteProject, toggleHidden } from '../../actions/projectsActions'
 
 class ProjectAdminButtons extends Component {
-
-  constructor(props) {
-    super(props)
-    this.handleDelete = this.handleDelete.bind(this)
-    this.handleHide = this.handleHide.bind(this)
-    this.goBack = this.goBack.bind(this)
-  }
 
   handleDelete = () => {
     const { deleteProject, project } = this.props 
@@ -40,16 +34,23 @@ class ProjectAdminButtons extends Component {
 
     return (
       <div>
-        <Link to={`/projects/${id}/edit`}><button>Edit</button></Link> 
+        <Link to={`/projects/edit/${id}`}><button>Edit</button></Link> 
         <button onClick={this.handleHide}>{hidden ? 'Unhide' : 'Hide'}</button> 
         <button onClick={this.handleDelete}>X</button>
       </div>
     )
   }
+
+  static propTypes = {
+    project: PropTypes.object.isRequired,
+    admin: PropTypes.object.isRequired,
+    deleteProject: PropTypes.func.isRequired,
+    toggleHidden: PropTypes.func.isRequired
+  }
 }
 
-const mapStateToProps = ({ admin }) => ({ admin })
+// const mapStateToProps = ({ admin }) => ({ admin })
 
 export default withRouter(
-  connect(mapStateToProps, { deleteProject, toggleHidden })(ProjectAdminButtons)
+  connect(null, { deleteProject, toggleHidden })(ProjectAdminButtons)
 )
