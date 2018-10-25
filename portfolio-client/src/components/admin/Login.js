@@ -25,6 +25,4 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ admin }) => ({ admin })
-
-export default connect(mapStateToProps, { authorizeAdmin })(Login)
+export default connect(null, { authorizeAdmin })(Login)

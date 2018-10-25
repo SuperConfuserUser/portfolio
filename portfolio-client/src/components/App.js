@@ -31,6 +31,9 @@ class App extends Component {
           <Route path='/projects' render={(props) =>
             <ProjectsContainer {...props} admin={admin} />} 
           />
+          <Route path='/login' render={() => 
+            <Login admin={admin} />}
+          />
         </div>
       </Router>
     )
