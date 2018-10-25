@@ -49,8 +49,9 @@ class ProjectAdminButtons extends Component {
   }
 }
 
-// const mapStateToProps = ({ admin }) => ({ admin })
-
 export default withRouter(
-  connect(null, { deleteProject, toggleHidden })(ProjectAdminButtons)
+  connect(null, { 
+    deleteProject,
+    toggleHidden
+  })(ProjectAdminButtons)
 )
