@@ -8,7 +8,7 @@ const AdminRoute = ({ component: Component, admin, ...rest }) => {
       {...rest}
       render={props =>
         admin.auth ? 
-          <Component {...props} /> :
+          <Component {...props} admin={admin} /> :
           <Redirect to='/login' />
       }
     />

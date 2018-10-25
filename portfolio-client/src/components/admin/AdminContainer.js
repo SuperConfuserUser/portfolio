@@ -1,28 +1,19 @@
-import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from 'react'
+import PropTypes from 'prop-types'
 import AdminDashboard from './AdminDashboard'
 
-const PrivateRoute = ({ component: Component, admin, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    admin.auth ?
-    <Component {...props} /> :
-    <Redirect to='/login' />
-  )} />
-)
- 
-class AdminContainer extends Component {
-  render() {
-    const { match, admin } = this.props
 
-    return (
-      <div>
-        <PrivateRoute exact path={match.path} component={AdminDashboard} admin={admin} />
-      </div>
-    )
-  }
+const AdminContainer = (props) => {
+  const { admin } = props
+  return (
+    <div>
+      <AdminDashboard admin={admin} />
+    </div>
+  )
 }
 
-const mapStateToProps = ({ admin }) => ({ admin })
+AdminContainer.propTypes = {
+  admin: PropTypes.object.isRequired
+}
 
-export default connect(mapStateToProps)(AdminContainer)
+export default AdminContainer

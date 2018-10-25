@@ -6,6 +6,7 @@ import Home from './Home'
 import About from './About'
 import ContactFormContainer from './contact/ContactFormContainer'
 import ProjectsContainer from './projects/ProjectsContainer'
+import AdminRoute from './admin/AdminRoute'
 import AdminContainer from './admin/AdminContainer'
 import AdminNav from './admin/AdminNav'
 import Login from './admin/Login'
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     const { admin } = this.props
 
-    return(
+    return(      
       <Router>
         <div>
           <NavLink exact to='/'>Home</NavLink>
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path='/login' render={() => 
             <Login admin={admin} />}
           />
+          <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
         </div>
       </Router>
     )
