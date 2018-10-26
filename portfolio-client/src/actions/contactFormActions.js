@@ -30,10 +30,10 @@ export const sendMessage = message => {
       body: JSON.stringify({ message: message })
     })
       .then(response => response.json())
-      .then(messsage => 
-        messsage.success ? 
-          dispatch(setSuccessResponse(messsage.success)) :
-          dispatch(updateMessage(messsage))
+      .then(message => 
+        message.success ? 
+          dispatch(setSuccessResponse(message.success)) :
+          dispatch(updateMessage(message))
       )
       .catch(error => console.log('contact form error: ', error))
   }
