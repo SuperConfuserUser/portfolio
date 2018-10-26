@@ -21,7 +21,7 @@ class ProjectAdminControls extends Component {
       <div>
         <br />
         Project Controls: &nbsp;
-        <Link to='projects/new'>+</Link> &nbsp;
+        <Link to='/projects/new'>+</Link> &nbsp;
         <button onClick={this.handleShowHidden}>{admin.showHidden ? 'Hide Hidden' : 'Show Hidden'}</button>
       </div>
     )
