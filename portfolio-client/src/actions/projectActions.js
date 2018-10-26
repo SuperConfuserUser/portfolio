@@ -1,3 +1,5 @@
+import { updateProjectFormData } from './projectFormActions'
+
 // ** Action Creators ** 
 export const setProject = project => {
   return {
@@ -13,12 +15,14 @@ export const resetProject = () => {
 }
 
 // ** Async Actions **
-export const getProject = (id) => {
+export const getProject = (id, formData = false) => {
   return dispatch => {
     return fetch(`/api/projects/` + id)
       .then(response => response.json())
       .then(project => 
-        dispatch(setProject(project))
+        formData ? 
+          dispatch(updateProjectFormData(project)) :
+          dispatch(setProject(project))
       )
       .catch(({ error }) => console.log(error))
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-
-import { getProject } from '../../actions/projectActions'
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
+import { getProject } from '../../actions/projectActions'
 import { updateProject } from '../../actions/projectsActions'
 
 class ProjectUpdateForm extends Component {
@@ -13,14 +13,19 @@ class ProjectUpdateForm extends Component {
     this.state = {
       redirectUrl: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.props.resetProjectForm()
   }
 
   componentDidMount() {
-    const { getProject, match } = this.props
-    getProject(match.params.projectId)
+    const { getProject, projectFormData } = this.props
+    const { projectId } = this.props.match.params
+  
+    if(!projectFormData.name && !Object.keys(projectFormData.errors).length) {
+      getProject(projectId, true)
+    }
+  }
+
+  componentWillUnmount() {  
+    this.props.resetProjectForm()
   }
 
   handleChange = event => {
@@ -42,9 +47,10 @@ class ProjectUpdateForm extends Component {
   }
 
   render() {
-    
-    if(this.state.redirectUrl) {
-      return <Redirect push to={this.state.redirectUrl} />
+    const { redirectUrl } = this.state
+
+    if(redirectUrl) {
+      return <Redirect push to={redirectUrl} />
     }
 
     const { name, img_url, description } = this.props.projectFormData
@@ -84,6 +90,14 @@ class ProjectUpdateForm extends Component {
         </form>
       </div>
     )
+  }
+
+  static propTypes = {
+    projectFormData: PropTypes.object.isRequired,
+    getProject: PropTypes.func.isRequired,
+    updateProjectFormData: PropTypes.func.isRequired,
+    resetProjectForm: PropTypes.func.isRequired,
+    updateProject: PropTypes.func.isRequired
   }
 }
 
