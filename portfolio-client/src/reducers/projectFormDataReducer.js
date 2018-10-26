@@ -12,6 +12,9 @@ export default ( state = initialState, action) => {
     
     case 'RESET_PROJECT_FORM':
       return initialState
+
+    case 'ADD_PROJECT_FORM_ERRORS':
+      return {...state, errors: action.errors}
       
     default:
       return state

@@ -31,9 +31,13 @@ class ProjectForm extends Component {
 
     event.preventDefault()
     createProject(projectFormData)
-      .then(projectId => this.setState({ 
-        redirectUrl: `/projects/${projectId}` 
-      }))
+      .then(projectId => {
+        if(projectId) {
+          this.setState({ 
+            redirectUrl: `/projects/${projectId}` 
+          })
+        }
+      })
   }
 
   render() {
@@ -43,7 +47,7 @@ class ProjectForm extends Component {
       return <Redirect push to={redirectUrl} />
     }
 
-    const { name, img_url, description } = this.props.projectFormData
+    const { name, img_url, description, errors } = this.props.projectFormData
 
     return (
       <div>
@@ -78,6 +82,7 @@ class ProjectForm extends Component {
           <br />
           <input type="submit" value="Add" />
         </form>
+        {errors && 'SOMETHING WENT HORRIBLY WRONG!!! :O'}
       </div>
     )
   }

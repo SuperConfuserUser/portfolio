@@ -12,6 +12,9 @@ export const resetProjectForm = () => {
   }
 }
 
-
-// ** Async Actions **
-
+export const addProjectFormErrors = errors => {
+  return {
+    type: 'ADD_PROJECT_FORM_ERRORS',
+    errors
+  }
+}

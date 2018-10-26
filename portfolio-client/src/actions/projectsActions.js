@@ -1,4 +1,4 @@
-import { resetProjectForm } from './projectFormActions'
+import { resetProjectForm, addProjectFormErrors } from './projectFormActions'
 
 // ** Action Creators ** 
 export const setProjects = projects => {
@@ -30,8 +30,6 @@ export const deleteProjectSuccess = id => {
 }
 
 
-
-
 // ** Async Actions **
 export const getProjects = () => {
   return dispatch => {
@@ -53,11 +51,11 @@ export const createProject = project => {
       .then(response => response.json())
       .then(project => {
         if(project.errors) {
-          console.log('project errors: ', project.errors)
+          dispatch(addProjectFormErrors(project.errors))
         } else {
           dispatch(addProject(project))
           dispatch(resetProjectForm())
-          return project.id  
+          return project.id
         }
       })
       .catch(error => console.log('project form error: ', error))
