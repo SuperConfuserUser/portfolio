@@ -71,6 +71,7 @@ class ProjectUpdateForm extends Component {
               onChange={this.handleChange}
               value={name}
             />
+            {errors && errors.name}
           </div>
           <div>
             <label htmlFor="img_url">Image URL</label>
@@ -80,6 +81,7 @@ class ProjectUpdateForm extends Component {
               onChange={this.handleChange}
               value={img_url}
             />
+           {errors && errors.img_url}
           </div>
           <div>
             <label htmlFor="description">Description</label>
@@ -88,11 +90,11 @@ class ProjectUpdateForm extends Component {
               onChange={this.handleChange}
               value={description}
             />
+            {errors && errors.description}
           </div>
           <br />
           <input type="submit" value="Update" />
         </form>
-        {errors && 'SOMETHING WENT HORRIBLY WRONG!!!!'}
       </div>
     )
   }
