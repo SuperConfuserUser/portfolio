@@ -54,7 +54,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={name}
             />
-            {errors.name}
+            {errors && errors.name}
           </div>
           <div>
             <label htmlFor="email">Email</label>
@@ -64,7 +64,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={email}
             />
-            {errors.email && errors.email[0]}
+            {(errors && errors.email) && errors.email[0]}
           </div>
           <div>
             <label htmlFor="subject">Subject</label>
@@ -82,7 +82,7 @@ class ContactForm extends Component {
               onChange={this.handleChange}
               value={body}
             />
-            {errors.body}
+            {errors && errors.body}
           </div>
           <div>
             <label htmlFor="copy">Want a copy?</label>

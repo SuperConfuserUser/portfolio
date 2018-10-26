@@ -61,7 +61,7 @@ class ProjectForm extends Component {
               onChange={this.handleChange}
               value={name}
             />
-            {errors.name}
+            {errors && errors.name}
           </div>
           <div>
             <label htmlFor="img_url">Image URL</label>
@@ -71,7 +71,7 @@ class ProjectForm extends Component {
               onChange={this.handleChange}
               value={img_url}
             />
-            {errors.img_url}
+            {errors && errors.img_url}
           </div>
           <div>
             <label htmlFor="description">Description</label>
@@ -80,7 +80,7 @@ class ProjectForm extends Component {
               onChange={this.handleChange}
               value={description}
             />
-            {errors.description}
+            {errors && errors.description}
           </div>
           <br />
           <input type="submit" value="Add" />
