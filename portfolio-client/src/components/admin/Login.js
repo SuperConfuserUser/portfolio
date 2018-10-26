@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { authorizeAdmin } from '../../actions/adminActions'
+import { login } from '../../actions/adminActions'
 
 class Login extends Component {
   
   handleLogin = () => {
-    const { authorizeAdmin } = this.props
-    authorizeAdmin()
+    const { login } = this.props
+    login()
   }
 
   render() {
@@ -25,4 +25,4 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { authorizeAdmin })(Login)
+export default connect(null, { login })(Login)
