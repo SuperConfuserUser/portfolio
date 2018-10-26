@@ -23,7 +23,7 @@ class Api::ProjectsController < ApplicationController
       if @project.update(project_params)
         render json: @project
       else
-        render json: { message: project.errors}, status: 422
+        render json: { errors: @project.errors }, status: 422
       end
     end
 
