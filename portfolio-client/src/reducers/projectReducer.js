@@ -11,6 +11,9 @@ export default (state = initialState, action) => {
     case 'GET_PROJECT_SUCCESS':
       return action.project
 
+    case 'UPDATE_PROJECT_SUCCESS':
+      return action.project
+
     case 'RESET_PROJECT':
       return initialState
 
