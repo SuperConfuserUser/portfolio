@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { createProject } from '../../actions/projectsActions'
 
@@ -12,8 +12,9 @@ class ProjectForm extends Component {
     this.state = {
       redirectUrl: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentWillUnmount() {
     this.props.resetProjectForm()
   }
 
@@ -30,15 +31,16 @@ class ProjectForm extends Component {
 
     event.preventDefault()
     createProject(projectFormData)
-      .then(project => this.setState({ 
-        redirectUrl: `/projects/${project.id}` 
+      .then(projectId => this.setState({ 
+        redirectUrl: `/projects/${projectId}` 
       }))
   }
 
   render() {
+    const { redirectUrl } = this.state
 
-    if(this.state.redirectUrl) {
-      return <Redirect push to={this.state.redirectUrl} />
+    if(redirectUrl) {
+      return <Redirect push to={redirectUrl} />
     }
 
     const { name, img_url, description } = this.props.projectFormData
@@ -78,6 +80,13 @@ class ProjectForm extends Component {
         </form>
       </div>
     )
+  }
+
+  static propTypes = {
+    projectFormData: PropTypes.object.isRequired,
+    updateProjectFormData: PropTypes.func.isRequired,
+    resetProjectForm: PropTypes.func.isRequired,
+    createProject: PropTypes.func.isRequired,
   }
 }
 
