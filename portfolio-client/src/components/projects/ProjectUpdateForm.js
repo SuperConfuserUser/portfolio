@@ -41,9 +41,13 @@ class ProjectUpdateForm extends Component {
 
     event.preventDefault()
     updateProject(projectFormData)
-      .then(project => this.setState({ 
-        redirectUrl: `/projects/${project.id}` 
-      }))
+      .then(project => {
+        if(!project.errors) {
+          this.setState({ 
+            redirectUrl: `/projects/${project.id}` 
+          })
+        }
+      })
   }
 
   render() {
@@ -53,7 +57,7 @@ class ProjectUpdateForm extends Component {
       return <Redirect push to={redirectUrl} />
     }
 
-    const { name, img_url, description } = this.props.projectFormData
+    const { name, img_url, description, errors } = this.props.projectFormData
 
     return (
       <div>
@@ -88,6 +92,7 @@ class ProjectUpdateForm extends Component {
           <br />
           <input type="submit" value="Update" />
         </form>
+        {errors && 'SOMETHING WENT HORRIBLY WRONG!!!!'}
       </div>
     )
   }

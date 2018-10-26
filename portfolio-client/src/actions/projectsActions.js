@@ -73,15 +73,12 @@ export const updateProject = project => {
     })
       .then(response => response.json())
       .then(project => {
-        if(project.errors) {
-          console.log('update errors: ', project.errors)
-          return null
-        } else {
+        project.errors ?
+          dispatch(addProjectFormErrors(project.errors)) :
           dispatch(updateProjectSuccess(project))
-          return project
-        }
+        return project
       })
-      .catch(({ error }) => console.log(error))
+      .catch(error => console.log('update project error: ', error))
   }
 }
 
