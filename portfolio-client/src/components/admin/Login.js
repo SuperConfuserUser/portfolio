@@ -27,7 +27,7 @@ class Login extends Component {
     login(this.state)
   }
 
-  // resets admin errors
+  // resets admin errors 
   componentWillUnmount() {
     const { admin, logoutAdmin } = this.props
 

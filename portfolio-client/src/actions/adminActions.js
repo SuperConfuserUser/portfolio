@@ -34,7 +34,7 @@ export const login = auth => {
       },
       body: JSON.stringify({ 
         auth: { 
-          email: user, 
+          username: user,
           password: password
         }
       })
