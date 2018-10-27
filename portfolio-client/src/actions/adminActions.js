@@ -4,9 +4,10 @@ export const toggleShowHidden = () => {
   }
 }
 
-export const authorizeAdmin = () => {
+export const authorizeAdmin = token => {
   return {
-    type: 'AUTHORIZE_ADMIN'
+    type: 'AUTHORIZE_ADMIN',
+    token
   }
 }
 
@@ -16,21 +17,35 @@ export const logoutAdmin = () => {
   }
 }
 
+export const addLoginError = () => {
+  return {
+    type: 'ADD_LOGIN_ERROR'
+  }
+}
+
 // ** Async Actions **
 export const login = auth => {
-  console.log('logging in...')
   return dispatch => {
+    const { user, password } = auth
     return fetch('/api/user_token/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ auth: {password: 'admin', email: 'admin@chelyho.com'} })
+      body: JSON.stringify({ 
+        auth: { 
+          email: user, 
+          password: password
+        }
+      })
     })
       .then(response => response.json())
-      .then(auth => 
-        console.log('login: ', auth)
+      .then(token => 
+        dispatch(authorizeAdmin(token))
       )
-      .catch(error => console.log('contact form error: ', error))
+      .catch(error => {
+        console.log('contact form error: ', error)
+        dispatch(addLoginError())
+      })
   }
 }

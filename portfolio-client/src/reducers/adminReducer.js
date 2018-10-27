@@ -1,6 +1,8 @@
 const initialState = {
   auth: false,
-  showHidden: false
+  token: '',
+  showHidden: false,
+  error: false
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +12,14 @@ export default (state = initialState, action) => {
       return initialState
     
     case 'AUTHORIZE_ADMIN':
-      return { ...state, auth: true }
+      return { ...state,
+         auth: true, 
+         error: false, 
+         token: action.token 
+        }
+    
+    case 'ADD_LOGIN_ERROR':
+      return { ...state, error: true }
     
     case 'TOGGLE_SHOW_HIDDEN':
       return { ...state, showHidden: !state.showHidden }
