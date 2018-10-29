@@ -1,5 +1,5 @@
 class Api::ProjectsController < ApplicationController
-
+  before_action :authenticate_user, only: [:create, :update, :destroy]
   before_action :set_project, only: [:show, :update, :destroy]
 
   def index
@@ -12,7 +12,7 @@ class Api::ProjectsController < ApplicationController
 
   def create
     project = Project.new(project_params)
-    if project.save
+    if current_user.admin && project.save
       render json: project
     else
       render json: { errors: project.errors }, status: 422
@@ -20,7 +20,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
+    if current_user.admin && @project.update(project_params)
       render json: @project
     else
       render json: { errors: @project.errors }, status: 422
@@ -28,7 +28,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project.destroy
+    if current_user.admin && @project.destroy
       render json: { message: "Project successfully deleted" }, status: 200
     else
       render json: { error: "Unable to delete"}, status: 400
