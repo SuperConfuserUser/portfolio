@@ -37,7 +37,7 @@ class Login extends Component {
   }
 
   render() {
-    const { auth, error } = this.props.admin
+    const { auth, loginError } = this.props.admin
     const { user, password } = this.state
 
     if(auth) {
@@ -68,7 +68,7 @@ class Login extends Component {
           <br />
           <input type="submit" value="Login" />
           <br />
-          {error && 'SOMETHING WENT HORRIBLY WRONG!'}
+          {loginError && 'SOMETHING WENT HORRIBLY WRONG!'}
         </form>
       </div>
     )
