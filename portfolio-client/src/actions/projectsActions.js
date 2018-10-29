@@ -39,11 +39,13 @@ export const getProjects = () => {
   }
 }
 
-export const createProject = project => {
+export const createProject = (project) => {
+  const token =`Bearer ${localStorage.getItem('jwt')}`
   return dispatch => {
     return fetch('/api/projects/', {
       method: 'POST',
       headers: {
+        authorization: token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ project: project })
@@ -63,10 +65,12 @@ export const createProject = project => {
 }
 
 export const updateProject = project => {
+  const token =`Bearer ${localStorage.getItem('jwt')}`
   return dispatch => {
     return fetch('/api/projects/' + project.id, {
       method: 'PUT',
       headers: {
+        authorization: token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ project: project })
@@ -83,23 +87,29 @@ export const updateProject = project => {
 }
 
 export const deleteProject = id => {
+  const token =`Bearer ${localStorage.getItem('jwt')}`
   return dispatch => {
     return fetch('/api/projects/' + id, {
-      method: 'DELETE' 
+      method: 'DELETE',
+      headers: {
+        authorization: token,
+      }
     })
       .then(response => response.json())
       .then(({ message }) => {
         dispatch(deleteProjectSuccess(id))
       })
-      .catch(({ error }) => console.log(error))
+      .catch(error=> console.log('delete project error: ', error))
   }
 }
 
 export const toggleHidden = project => {
+  const token =`Bearer ${localStorage.getItem('jwt')}`  
   return dispatch => {
     return fetch('/api/projects/' + project.id, {
       method: 'PUT',
       headers: {
+        authorization: token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ project: 
@@ -111,6 +121,6 @@ export const toggleHidden = project => {
         dispatch(updateProjectSuccess(project))
         return project
       })
-      .catch(({ error }) => console.log(error))
+      .catch(error=> console.log('project toggle hidden error: ', error))
   }
 }

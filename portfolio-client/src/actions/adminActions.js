@@ -12,6 +12,7 @@ export const authorizeAdmin = token => {
 }
 
 export const logoutAdmin = () => {
+  localStorage.clear()
   return {
     type: 'RESET_ADMIN'
   }
@@ -40,9 +41,10 @@ export const login = auth => {
       })
     })
       .then(response => response.json())
-      .then(token => 
-        dispatch(authorizeAdmin(token))
-      )
+      .then(({ jwt }) => {
+        localStorage.setItem('jwt', jwt)
+        dispatch(authorizeAdmin())
+      })
       .catch(error => {
         console.log('contact form error: ', error)
         dispatch(addLoginError())

@@ -1,6 +1,5 @@
 const initialState = {
-  auth: false,
-  token: '',
+  auth: localStorage.getItem('jwt') ? true : false,
   showHidden: false,
   loginError: false
 }
@@ -13,6 +12,7 @@ export default (state = initialState, action) => {
     
     case 'AUTHORIZE_ADMIN':
       return { ...state,
+         auth: localStorage.getItem('jwt') ? true : false,
          loginError: false
         }
     
