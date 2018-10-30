@@ -9,6 +9,7 @@ import AdminRoute from './admin/AdminRoute'
 import AdminContainer from './admin/AdminContainer'
 import AdminNav from './admin/AdminNav'
 import Login from './admin/Login'
+import Footer from './Footer'
 import { toast } from 'materialize-css'
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
             <Login admin={admin} />}
           />
           <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
+          <Footer />
         </div>
       </Router>
     )
