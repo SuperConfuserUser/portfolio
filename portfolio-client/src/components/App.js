@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import Home from './Home'
 import About from './About'
 import ContactFormContainer from './contact/ContactFormContainer'
@@ -10,15 +9,24 @@ import AdminRoute from './admin/AdminRoute'
 import AdminContainer from './admin/AdminContainer'
 import AdminNav from './admin/AdminNav'
 import Login from './admin/Login'
+import { toast } from 'materialize-css'
 
 class App extends Component {
+
+  handleToast = event => {
+    toast({html: event.target.attributes.data.value })
+  }
 
   render() {
     const { admin } = this.props
 
     return(      
       <Router>
-        <div>
+        <div className='App'>
+        <button className='btn' data='imma toast!' onClick={this.handleToast}>Toasty!</button>
+
+        <span>Things!</span>
+        
           <NavLink exact to='/'>Home</NavLink>&nbsp;
           <NavLink to='/projects'>Projects </NavLink>&nbsp;
           <NavLink to='/about'>About</NavLink>&nbsp;
