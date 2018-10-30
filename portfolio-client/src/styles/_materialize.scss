@@ -1,0 +1,7 @@
+@import '~materialize-css/sass/materialize';
+
+@mixin materialize($classes...) {
+  @each $class in $classes {
+    @extend .#{$class};
+  }
+}
