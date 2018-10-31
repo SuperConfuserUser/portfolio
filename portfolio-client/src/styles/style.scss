@@ -6,7 +6,8 @@
 $font-stack: 'Roboto Mono', monospace, sans-serif;
 $primary-color: #ffeb3b;
 $primary-color-light: Snow;
-$accent-color: #424242;
+$font-color: #424242;
+$font-secondary-color: #a59292;
 
 
 
@@ -23,12 +24,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 // app styles
 .app {
   @include materialize(row);
   position: relative;
-  height: 100vh;
-
+  
   .hero {
     @include materialize(col, l5, m4, hide-on-small-only, valign-wrapper, yellow);
     color: $primary-color-light;
@@ -51,8 +52,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .content {
     @include materialize(col, l7, m8, s12, right);
-    height: 100%;
-    padding: 0;
+    padding: 0% 4%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
   }
 }
 
@@ -64,14 +71,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .fullnav-container {
   @extend %nav-container;
-  padding: 1% 2%;
 
   .fullnav {
     @include materialize(hide-on-small-only)
   }
 
   a {
-    color: $accent-color;
+    color: $font-color;
     &:hover {
       text-decoration: underline;
     }
@@ -84,7 +90,7 @@ h1, h2, h3, h4, h5, h6 {
    // hide-on-med-and-up,
    .sidenav-trigger {
     @include materialize(right);
-    color: $accent-color;
+    color: $font-color;
     cursor: pointer;
   }
 }
@@ -94,5 +100,34 @@ h1, h2, h3, h4, h5, h6 {
 
   .active {
     text-decoration: underline;
+  }
+}
+
+//footer styles
+footer {
+  @include materialize(page-footer, transparent, valign-wrapper, row);
+  color: $font-color;
+  margin: 0;
+
+  .copyright {
+    @include materialize(col, s6, left);
+  }
+
+  .external-links{
+    @include materialize(col, s6, right, right-align);
+  }
+
+  a {
+    color: $font-secondary-color;
+    font-size: 1.5rem;
+    margin-left: 1.2rem;
+    // background: blue;
+    &:hover {
+      color: $font-color;
+    }
+  }
+
+  .material-icons {
+    font-size: 2.4rem;
   }
 }

@@ -29,21 +29,24 @@ class App extends Component {
           </div>
           <div className='content'>
             {/* <button className='btn' data='imma toast!' onClick={this.handleToast}>Toasty!</button> */}
+
             <NavBarContainer admin={admin}/>
 
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/about' component={About} />
-              <Route path='/contact' component={ContactFormContainer} />
-              <Route path='/projects' render={(props) =>
-                <ProjectsContainer {...props} admin={admin} />} 
-              />
-              <Route path='/login' render={() => 
-                <Login admin={admin} />}
-              />
-              <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
-            </Switch>
-
+            <main>
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route path='/about' component={About} />
+                <Route path='/contact' component={ContactFormContainer} />
+                <Route path='/projects' render={(props) =>
+                  <ProjectsContainer {...props} admin={admin} />} 
+                />
+                <Route path='/login' render={() => 
+                  <Login admin={admin} />}
+                />
+                <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
+              </Switch>
+            </main>
+    
             <Footer />
           </div>
         </div>
