@@ -1,5 +1,27 @@
 @import 'materialize';
 @import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+// variables
+$font-stack: 'Roboto Mono', monospace, sans-serif;
+$primary-color: #ffeb3b;
+$primary-color-light: Snow;
+$accent-color: #424242;
+
+
+
+//general 
+body {
+  font-family: $font-stack;
+  font-size: 1rem;
+  background: $primary-color-light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  // text-transform: uppercase;
+  // text-decoration: underline;
+}
+
 
 .app {
   @include materialize(row);
