@@ -23,29 +23,57 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+// app styles
 .app {
   @include materialize(row);
   position: relative;
   height: 100vh;
 
   .hero {
-    @include materialize(col, l6, m4, hide-on-small-only, valign-wrapper, yellow, white-text);
+    @include materialize(col, l5, m4, hide-on-small-only, valign-wrapper, yellow);
+    color: $primary-color-light;
     position: fixed;
     // top: 0;
-    left: 0;
+    // left: 0;
     // bottom: 0;
     // display: block;
     height: 100%;
+    padding-bottom: 10%;
     span {
-      @include materialize(col, l10, offset-l1, center-align)
+      @include materialize(col, l10, offset-l1, center-align);
       font-size: 12rem;
+      @media #{$medium-and-down} {
+        font-size: 8rem;
+        padding-left: 12%;
+      }
     }
   }
 
   .content {
-    @include materialize(col, l6, m8, s12, right);
+    @include materialize(col, l7, m8, s12, right);
     height: 100%;
+    padding: 0;
   }
 }
 
 
+// navbar styles
+.fullNavContainer {
+  @include materialize(nav-wrapper, transparent, z-depth-0)
+  padding: 1% 2%;
+
+  #fullnav {
+    @include materialize(hide-on-small-only)
+  }
+
+  a {
+    color: $accent-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+}

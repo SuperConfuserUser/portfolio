@@ -8,8 +8,8 @@ class NavBarContainer extends Component {
 
     return (
       <>
-        <nav>
-          <NavBar admin={admin} />
+        <nav className='fullNavContainer'>
+          <NavBar admin={admin} klass='fullnav' />
         </nav>
       </>
     )

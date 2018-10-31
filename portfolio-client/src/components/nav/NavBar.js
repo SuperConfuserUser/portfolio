@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom'
 import AdminNav from './AdminNav'
 
 const NavBar = (props) => {
-  const { admin } = props
+  const { admin, klass } = props
 
   return (
-    <ul>
+    <ul className={klass} >
       <li><NavLink exact to='/'>Root</NavLink></li>
       <li><NavLink to='/projects'>Projects</NavLink></li>
       <li><NavLink to='/about'>About</NavLink></li>
