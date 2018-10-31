@@ -58,11 +58,15 @@ h1, h2, h3, h4, h5, h6 {
 
 
 // navbar styles
-.fullNavContainer {
+%nav-container {
   @include materialize(nav-wrapper, transparent, z-depth-0)
+}
+
+.fullnav-container {
+  @extend %nav-container;
   padding: 1% 2%;
 
-  #fullnav {
+  .fullnav {
     @include materialize(hide-on-small-only)
   }
 
@@ -72,6 +76,21 @@ h1, h2, h3, h4, h5, h6 {
       text-decoration: underline;
     }
   }
+
+  .active {
+    text-decoration: underline;
+  }
+
+   // hide-on-med-and-up,
+   .sidenav-trigger {
+    @include materialize(right);
+    color: $accent-color;
+    cursor: pointer;
+  }
+}
+
+.sidenav-container {
+  @extend %nav-container;
 
   .active {
     text-decoration: underline;
