@@ -14,39 +14,42 @@ import { toast } from 'materialize-css'
 
 class App extends Component {
 
-  handleToast = event => {
-    toast({html: event.target.attributes.data.value })
-  }
+  // handleToast = event => {
+  //   toast({html: event.target.attributes.data.value })
+  // }
 
   render() {
     const { admin } = this.props
 
     return(      
       <Router>
-        <div className='App'>
-        <button className='btn' data='imma toast!' onClick={this.handleToast}>Toasty!</button>
+        <div className='app'>
+          <div className='hero'>
+            <span>C:</span>
+          </div>
+          <div className='content'>
+            {/* <button className='btn' data='imma toast!' onClick={this.handleToast}>Toasty!</button> */}
 
-        <span>Things!</span>
-        
-          <NavLink exact to='/'>Home</NavLink>&nbsp;
-          <NavLink to='/projects'>Projects </NavLink>&nbsp;
-          <NavLink to='/about'>About</NavLink>&nbsp;
-          <NavLink to='/contact'>Contact</NavLink>
+            <NavLink exact to='/'>Home</NavLink>&nbsp;
+            <NavLink to='/projects'>Projects </NavLink>&nbsp;
+            <NavLink to='/about'>About</NavLink>&nbsp;
+            <NavLink to='/contact'>Contact</NavLink>
 
-          {/* {admin.auth && <AdminNav admin={admin} />} */}
-          <AdminNav admin={admin} />
-      
-          <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/contact' component={ContactFormContainer} />
-          <Route path='/projects' render={(props) =>
-            <ProjectsContainer {...props} admin={admin} />} 
-          />
-          <Route path='/login' render={() => 
-            <Login admin={admin} />}
-          />
-          <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
-          <Footer />
+            {/* {admin.auth && <AdminNav admin={admin} />} */}
+            <AdminNav admin={admin} />
+
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={ContactFormContainer} />
+            <Route path='/projects' render={(props) =>
+              <ProjectsContainer {...props} admin={admin} />} 
+            />
+            <Route path='/login' render={() => 
+              <Login admin={admin} />}
+            />
+            <AdminRoute path='/admin' component={AdminContainer} admin={admin} />
+            <Footer />
+          </div>
         </div>
       </Router>
     )
