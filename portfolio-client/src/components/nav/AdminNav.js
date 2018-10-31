@@ -1,21 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { logoutAdmin } from '../../actions/adminActions'
 
 function AdminNav(props) {
-  const handleLogout = () => {
+  const handleLogout = event => {
+    event.preventDefault()
     props.logoutAdmin()
   }
 
-  const { admin } = props
-
   return (
-    <div>
-      <br />
-      <NavLink to='/admin'>Dashboard</NavLink> &nbsp;
-      {admin.auth && 
-        <button onClick={handleLogout} >Logout</button>}
+    <div className='admin-nav'>
+      <li><NavLink to='/admin'>Dashboard</NavLink></li>
+      <li><Link to='#' onClick={handleLogout}>Logout</Link></li>
     </div>
   )
 }
