@@ -41,49 +41,49 @@ class ContactForm extends Component {
       <form onSubmit={this.handleSubmit} className='contact-form'>
         <div>
           <input 
-            type="text"
-            id="name"
+            type='text'
+            id='name'
             onChange={this.handleChange}
             value={name}
             className={errors.name && 'invalid'}
           />
-          <label htmlFor="name">Name</label>
+          <label htmlFor='name'>Name</label>
           {errors.name && 
             <span data-error={errors.name}></span>}
         </div>
 
         <div>
           <input 
-            type="text" 
-            id="email"
+            type='text' 
+            id='email'
             onChange={this.handleChange}
             value={email}
             className={errors.email && 'invalid'}
           />
-          <label htmlFor="email">Email</label>
+          <label htmlFor='email'>Email</label>
           {errors.email && 
             <span data-error={errors.email[0]}></span>}
         </div>
 
         <div>
           <input 
-            type="text" 
-            id="subject"
+            type='text' 
+            id='subject'
             onChange={this.handleChange}
             value={subject}
           />
-          <label htmlFor="subject">Subject (optional)</label>
+          <label htmlFor='subject'>Subject (optional)</label>
         </div>
 
         <div>
-          <div className="input-field">
+          <div className='input-field'>
             <textarea 
-              id="body"
+              id='body'
               onChange={this.handleChange}
               value={body}
               className={errors.body ? 'materialize-textarea invalid' : 'materialize-textarea'}
             />
-            <label htmlFor="body">Message</label>
+            <label htmlFor='body'>Message</label>
             {errors.body && 
               <span data-error={errors.body}></span>}
           </div>
@@ -91,15 +91,15 @@ class ContactForm extends Component {
 
         <label>
           <input 
-            type="checkbox"
-            id="copy"
+            type='checkbox'
+            id='copy'
             onChange={this.handleChange}
             checked={copy}
           />
           <span>Want a copy?</span>
         </label>
 
-        <button type="submit">Send</button>
+        <button type='submit'>Send</button>
         
       </form>
     )
