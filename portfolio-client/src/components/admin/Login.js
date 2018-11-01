@@ -16,10 +16,10 @@ class Login extends Component {
   }
 
   handleChange = event => {
-    const { name, value } = event.target
+    const { id, value } = event.target
     
     this.setState({
-      [name]: value
+      [id]: value
     })
   }
 
@@ -47,29 +47,38 @@ class Login extends Component {
     }
     
     return (
-      <div>
-        <form onSubmit={this.handleLogin}>
+      <div className='login'>
+        <h1>Shhhhh
+          <span>What's the secret handshake?</span>
+        </h1>
+
+        <form onSubmit={this.handleLogin} className='login-form'>
           <div>
-            <label htmlFor="user">Username or Email</label>
-            <input 
-              type="text" 
-              name="user"
+            <input
+              type='text' 
+              id='user'
               onChange={this.handleChange}
               value={user}
             />
+            <label htmlFor='user'>Username or Email</label>
           </div>
+
           <div>
-            <label htmlFor="password">Password</label>
-            <input 
-              type="password" 
-              name="password"
+            <input
+              type='password' 
+              id='password'
               onChange={this.handleChange}
               value={password}
             />
+            <label htmlFor='password'>Password</label>
           </div>
-        {loginError && <ErrorMessage message='Oh, dear...' />}
-        
+          
+          <button type='submit'>Login</button>
+
+          {loginError && <ErrorMessage message='Oh, dear...' />}
+
         </form>
+      </div>
     )
   }
 
