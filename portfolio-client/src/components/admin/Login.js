@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login, logoutAdmin } from '../../actions/adminActions'
+import ErrorMessage from './ErrorMessage'
 
 class Login extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -65,12 +66,9 @@ class Login extends Component {
               value={password}
             />
           </div>
-          <br />
-          <input type="submit" value="Login" />
-          <br />
-          {loginError && 'SOMETHING WENT HORRIBLY WRONG!'}
+        {loginError && <ErrorMessage message='Oh, dear...' />}
+        
         </form>
-      </div>
     )
   }
 }

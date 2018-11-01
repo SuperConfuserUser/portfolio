@@ -233,6 +233,19 @@ form {
   span {
     @include materialize(helper-text)
   }
+
+  .error-msg {
+    @include materialize(red-text, valign-wrapper)
+    min-height: 100%;
+    margin-top: 3rem;
+
+    span {
+      @include materialize(red-text)
+      margin-left: .75rem;
+      font-size: 1.2rem;
+      // text-transform: uppercase;
+    }
+  }
 }
 
 
