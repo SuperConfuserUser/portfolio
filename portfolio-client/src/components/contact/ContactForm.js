@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ContactForm extends Component {
-
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -15,13 +15,13 @@ class ContactForm extends Component {
   }
 
   handleChange = event => {
-    const { name, type, checked, value } = event.target
+    const { id, type, checked, value } = event.target
     const val = type === 'checkbox' ? checked : value
     const { updateMessage, contactFormData } = this.props
-    const currentMessage = { ...contactFormData,  [name]:val }
+    const currentMessage = { ...contactFormData,  [id]:val }
 
     this.setState(() => {
-      return { [name]: val }
+      return { [id]: val }
     })
     
     updateMessage(currentMessage)
@@ -39,47 +39,46 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit} className='contact-form'>
-      <div>
-            <input 
-              type="text" 
-              name="name"
-              onChange={this.handleChange}
-              value={name}
+        <div>
+          <input 
+            type="text"
+            id="name"
+            onChange={this.handleChange}
+            value={name}
             className={errors.name && 'invalid'}
-            />
+          />
           <label htmlFor="name">Name</label>
           {errors.name && 
             <span data-error={errors.name}></span>}
-          </div>
+        </div>
 
-          <div>
-            <input 
-              type="text" 
-              name="email"
-              onChange={this.handleChange}
-              value={email}
+        <div>
+          <input 
+            type="text" 
+            id="email"
+            onChange={this.handleChange}
+            value={email}
             className={errors.email && 'invalid'}
-            />
+          />
           <label htmlFor="email">Email</label>
           {errors.email && 
             <span data-error={errors.email[0]}></span>}
-          </div>
+        </div>
 
-          <div>
-            <input 
-              type="text" 
-              name="subject"
-              onChange={this.handleChange}
-              value={subject}
-            />
+        <div>
+          <input 
+            type="text" 
+            id="subject"
+            onChange={this.handleChange}
+            value={subject}
+          />
           <label htmlFor="subject">Subject (optional)</label>
-          </div>
+        </div>
 
-          <div>
+        <div>
           <div className="input-field">
             <textarea 
               id="body"
-              name="body"
               onChange={this.handleChange}
               value={body}
               className={errors.body ? 'materialize-textarea invalid' : 'materialize-textarea'}
@@ -88,22 +87,21 @@ class ContactForm extends Component {
             {errors.body && 
               <span data-error={errors.body}></span>}
           </div>
-          </div>
+        </div>
 
         <label>
-            <input 
-              type="checkbox"
-              name="copy"
-              onChange={this.handleChange}
-              checked={copy}
-            />
+          <input 
+            type="checkbox"
+            id="copy"
+            onChange={this.handleChange}
+            checked={copy}
+          />
           <span>Want a copy?</span>
         </label>
 
         <button type="submit">Send</button>
         
-        </form>
-      </div>
+      </form>
     )
   }
 
