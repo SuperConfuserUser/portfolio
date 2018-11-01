@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function MenuBtn(props) {
   const { show, toggleMenu } = props
-  const klass = 'show-menu-btn'
+  const klass = 'show-menu-btn icon'
   const klassHidden = klass + ' open'
 
   return (
