@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import NavBar from './NavBar'
-import M from 'materialize-css/dist/js/materialize.min.js'
+import { Sidenav } from 'materialize-css'
+import MenuBtn from './MenuBtn'
 
 class NavBarContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sideNav: {}
+      sideNav: {},
+      showMenuBtn: true
     }
   }
 
   componentDidMount() {
     const elem = document.querySelector(".sidenav")
-    const instance = M.Sidenav.init(elem, {
+    const instance = Sidenav.init(elem, {
         edge: "left",
-        inDuration: 250
+        inDuration: 250,
+        onOpenStart: () => this.setMenuBtn(false),
+        onCloseEnd: () => this.setMenuBtn(true)
     })
     this.setState({sideNav: instance})
   }
@@ -24,16 +28,28 @@ class NavBarContainer extends Component {
     this.state.sideNav.destroy()
   }
 
+  setMenuBtn = (value) => {
+    this.setState({
+      showMenuBtn: value
+    })
+  }
+
+  toggleMenu = () => {
+    const { sideNav } = this.state
+    sideNav.isOpen ? sideNav.close() : sideNav.open()
+  }
+
   render(){
     const { admin } = this.props
+    const { showMenuBtn } = this.state
 
     return (
       <>
         <nav className='fullnav-container'>
           <NavBar admin={admin} klass='fullnav' />
-          <i className='material-icons sidenav-trigger' data-target='slide-out'>menu</i>
+          <MenuBtn show={showMenuBtn} toggleMenu={this.toggleMenu} />
         </nav>
-
+        
         <nav className='sidenav-container'>
           <NavBar admin={admin} klass='sidenav sidenav-close' id='slide-out' />
         </nav>

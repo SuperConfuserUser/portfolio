@@ -8,7 +8,8 @@ $primary-color: #ffeb3b;
 $primary-color-light: Snow;
 $font-color: #424242;
 $font-secondary-color: #a59292;
-
+$secondary-color: #ba9d49;
+$content-side-padding: 5%;
 
 
 //general 
@@ -52,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .content {
     @include materialize(col, l7, m8, s12, right);
-    padding: 0% 4%;
+    padding: 0 $content-side-padding;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -101,6 +102,75 @@ h1, h2, h3, h4, h5, h6 {
   .active {
     text-decoration: underline;
   }
+}
+
+// show menu button 
+.show-menu-btn {
+  display: block;
+  position: fixed;
+  right: $content-side-padding;
+  top: 3%;
+  z-index: 9998;
+  width: 16px;
+  height: 12px;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+          transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.show-menu-btn:hover span {
+  background: $secondary-color;
+}
+
+.show-menu-btn span {
+  display: block;
+  position: absolute;
+  background: $font-color;
+  height: 2px;
+  width: 100%;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+          transition: .25s ease-in-out;
+}
+
+.show-menu-btn span:nth-child(1) {
+  top: 0px;
+}
+
+.show-menu-btn span:nth-child(2) {
+  top: 5px;
+}
+
+.show-menu-btn span:nth-child(3) {
+  top: 10px;
+  width: 12px;
+}
+
+.show-menu-btn.open span {
+  background: $primary-color-light;
+}
+
+.show-menu-btn.open span:nth-child(1) {
+  top: 6px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.show-menu-btn.open span:nth-child(2) {
+  left: -60px;
+  opacity: 0;
+}
+
+.show-menu-btn.open span:nth-child(3) {
+  top: 6px;
+  width: 100%;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
 }
 
 //footer styles
