@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { login, logoutAdmin as resetAdmin } from '../../actions/adminActions'
 import ErrorMessage from './ErrorMessage'
 
 class Login extends Component {
@@ -28,12 +30,11 @@ class Login extends Component {
     login(this.state)
   }
 
-  // resets admin errors 
   componentWillUnmount() {
-    const { admin, logoutAdmin } = this.props
+    const { admin, resetAdmin } = this.props
 
     if(!admin.auth) {
-      logoutAdmin()
+      resetAdmin()
     }
   }
 
@@ -71,6 +72,10 @@ class Login extends Component {
         </form>
     )
   }
+
+  static propTypes = {
+    admin: PropTypes.object.isRequired
+  }
 }
 
-export default connect(null, { login, logoutAdmin })(Login)
+export default connect(null, { login, resetAdmin })(Login)
