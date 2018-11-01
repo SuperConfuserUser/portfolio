@@ -34,9 +34,9 @@ h1 span {
   margin-bottom: 4rem;
 }
 
-i, .icon {
+.icon {
   &:hover {
-    color: $font-color;
+    color: $accent-color-med;
     transform: scale(1);
     border: 0;
     border-radius: 50%;
@@ -209,12 +209,22 @@ footer {
   }
 
   a {
-    color: $font-secondary-color;
+    color: $accent-color-med;
     font-size: 1.5rem;
-    margin-left: 1.2rem;
+    margin-left: .6rem;
+    padding: 0 .35rem;
     // background: blue;
-  &:hover {
-    color: $font-color;
+  }
+
+  i {
+    @extend .icon
+  }
+
+  // .material-icons {
+  //   font-size: 2.4rem;
+  // }
+}
+
 //forms
 form {
   div {
@@ -249,6 +259,7 @@ form {
 }
 
 
+
 //buttons
 button, .btn {
   @include materialize(btn-flat);
@@ -258,7 +269,7 @@ button, .btn {
   background: $accent-color-light;
 
   &:focus {
-    background: $accent-color-light;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   &:hover {
