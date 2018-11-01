@@ -15,8 +15,11 @@ export class ContactFormContainer extends Component {
     const {successResponse, message, updateMessage, sendMessage } = this.props
 
     return (
-      <div>
-        <h3>Let's Chat</h3>
+      <div className='contact'>
+        <h1>Interested?
+          <span>Let's Chat</span>
+        </h1>
+        
         {successResponse ? 
           <ContactFormResponse response={successResponse} /> : 
           <ContactForm 
