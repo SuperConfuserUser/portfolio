@@ -1,16 +1,20 @@
-@import 'materialize';
-@import 'variables';
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-
 // variables
 $font-stack: 'Roboto Mono', monospace, sans-serif;
 $primary-color: #ffeb3b;
 $primary-color-light: Snow;
 $font-color: #424242;
+$font-color-light: $primary-color-light;
 $font-secondary-color: #a59292;
-$secondary-color: #ba9d49;
+$accent-color-light: rgba(0, 0, 0, 0.1);
+$accent-color-med: rgba(0, 0, 0, 0.5);
+$secondary-color: $accent-color-med;
+$radio-empty-color: $accent-color-med;
+
 $content-side-padding: 5%;
 
+@import 'materialize';
+@import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
 //general 
 body {
@@ -198,12 +202,42 @@ footer {
     font-size: 1.5rem;
     margin-left: 1.2rem;
     // background: blue;
-    &:hover {
-      color: $font-color;
-    }
+  &:hover {
+    color: $font-color;
+//forms
+form {
+  div {
+    @include materialize(input-field)
   }
 
-  .material-icons {
-    font-size: 2.4rem;
+  input {
+    @include materialize(validate)
+  }
+
+  button[type='submit'] {
+    display: block;
+    margin-top: 4rem;
+  }
+  
+  span {
+    @include materialize(helper-text)
+  }
+}
+
+
+//buttons
+button, .btn {
+  @include materialize(btn-flat);
+  color: $font-color;
+  font-family: $font-stack;
+  border-radius: 0;
+  background: $accent-color-light;
+
+  &:focus {
+    background: $accent-color-light;
+  }
+
+  &:hover {
+    background: $primary-color;
   }
 }

@@ -38,57 +38,70 @@ class ContactForm extends Component {
     const { name, email, subject, body, copy, errors } = this.props.contactFormData
 
     return (
+      <form onSubmit={this.handleSubmit} className='contact-form'>
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="name">Name</label>
             <input 
               type="text" 
               name="name"
               onChange={this.handleChange}
               value={name}
+            className={errors.name && 'invalid'}
             />
-            {errors && errors.name}
+          <label htmlFor="name">Name</label>
+          {errors.name && 
+            <span data-error={errors.name}></span>}
           </div>
+
           <div>
-            <label htmlFor="email">Email</label>
             <input 
               type="text" 
               name="email"
               onChange={this.handleChange}
               value={email}
+            className={errors.email && 'invalid'}
             />
-            {(errors && errors.email) && errors.email[0]}
+          <label htmlFor="email">Email</label>
+          {errors.email && 
+            <span data-error={errors.email[0]}></span>}
           </div>
+
           <div>
-            <label htmlFor="subject">Subject</label>
             <input 
               type="text" 
               name="subject"
               onChange={this.handleChange}
               value={subject}
             />
+          <label htmlFor="subject">Subject (optional)</label>
           </div>
+
           <div>
-            <label htmlFor="body">Message</label>
+          <div className="input-field">
             <textarea 
+              id="body"
               name="body"
               onChange={this.handleChange}
               value={body}
+              className={errors.body ? 'materialize-textarea invalid' : 'materialize-textarea'}
             />
-            {errors && errors.body}
+            <label htmlFor="body">Message</label>
+            {errors.body && 
+              <span data-error={errors.body}></span>}
           </div>
-          <div>
-            <label htmlFor="copy">Want a copy?</label>
+          </div>
+
+        <label>
             <input 
               type="checkbox"
               name="copy"
               onChange={this.handleChange}
               checked={copy}
             />
-          </div>
-          <br />
-          <input type="submit" value="Send" />
+          <span>Want a copy?</span>
+        </label>
+
+        <button type="submit">Send</button>
+        
         </form>
       </div>
     )
