@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import TextInput from '../form/TextInput'
 
 class ContactForm extends Component {
   
@@ -39,41 +40,12 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit} className='contact-form'>
-        <div>
-          <input 
-            type='text'
-            id='name'
-            onChange={this.handleChange}
-            value={name}
-            className={errors.name && 'invalid'}
-          />
-          <label htmlFor='name'>Name</label>
-          {errors.name && 
-            <span data-error={errors.name}></span>}
-        </div>
+      
+        <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors}>Name</TextInput>
 
-        <div>
-          <input 
-            type='text' 
-            id='email'
-            onChange={this.handleChange}
-            value={email}
-            className={errors.email && 'invalid'}
-          />
-          <label htmlFor='email'>Email</label>
-          {errors.email && 
-            <span data-error={errors.email[0]}></span>}
-        </div>
+        <TextInput id='email' value={email} handleChange={this.handleChange} errors={errors}>Email</TextInput>
 
-        <div>
-          <input 
-            type='text' 
-            id='subject'
-            onChange={this.handleChange}
-            value={subject}
-          />
-          <label htmlFor='subject'>Subject (optional)</label>
-        </div>
+        <TextInput id='subject' value={subject} handleChange={this.handleChange}>Subject (optional)</TextInput>
 
         <div>
           <div className='input-field'>
