@@ -50,6 +50,14 @@ class ProjectUpdateForm extends Component {
       })
   }
 
+  handleReset = event => {
+    event.preventDefault()
+    const { getProject } = this.props
+    const { projectId } = this.props.match.params
+    
+    getProject(projectId, true)
+  }
+
   render() {
     const { redirectUrl } = this.state
 
@@ -62,7 +70,7 @@ class ProjectUpdateForm extends Component {
     return (
       <div>
         <h2>Edit Project</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className='project-update-form'>
           <div>
             <input 
               type='text'
@@ -102,8 +110,11 @@ class ProjectUpdateForm extends Component {
                 <span data-error={errors && errors.description}></span>}
             </div>
           </div>
+          
+          <button className='primary-btn'type='submit'>Edit</button>
 
-          <button type='submit'>Edit</button>
+          <button className='secondary-btn' onClick={this.handleReset}>Reset</button>
+          
         </form>
       </div>
     )
