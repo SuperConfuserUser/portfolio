@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { getProject } from '../../actions/projectActions'
 import { updateProject } from '../../actions/projectsActions'
+import TextInput from '../form/TextInput'
 
 class ProjectUpdateForm extends Component {
 
@@ -60,6 +61,7 @@ class ProjectUpdateForm extends Component {
 
   render() {
     const { redirectUrl } = this.state
+    const editMode = true
 
     if(redirectUrl) {
       return <Redirect push to={redirectUrl} />
@@ -71,31 +73,10 @@ class ProjectUpdateForm extends Component {
       <div>
         <h2>Edit Project</h2>
         <form onSubmit={this.handleSubmit} className='project-update-form'>
-          <div>
-            <input 
-              type='text'
-              id='name'
-              onChange={this.handleChange}
-              value={name}
-              className={errors && errors.name && 'invalid'}
-            />
-            <label htmlFor='name' className={name && 'active'}>Name</label>
-            {errors && errors.name && 
-              <span data-error={errors && errors.name}></span>}
-          </div>
 
-          <div>
-            <input 
-              type='text'
-              id='img_url'
-              onChange={this.handleChange}
-              value={img_url}
-              className={errors && errors.img_url && 'invalid'}
-            />
-            <label htmlFor='img_url' className={img_url && 'active'}>Image URL</label>
-            {errors && errors.img_url && 
-              <span data-error={errors && errors.img_url}></span>}
-          </div>
+          <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors} editMode={editMode}>Name</TextInput>
+
+          <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors} editMode={editMode}>Image URL</TextInput>
           
           <div>
             <div className='input-field'>
