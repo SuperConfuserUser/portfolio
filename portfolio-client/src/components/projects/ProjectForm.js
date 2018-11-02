@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { createProject } from '../../actions/projectsActions'
+import TextInput from '../form/TextInput'
 
 class ProjectForm extends Component {
 
@@ -53,32 +54,11 @@ class ProjectForm extends Component {
       <div>
         <h2>New Project</h2>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <input 
-              type='text'
-              id='name'
-              onChange={this.handleChange}
-              value={name}
-              className={errors.name && 'invalid'}
-            />
-            <label htmlFor='name'>Name</label>
-            {errors.name && 
-              <span data-error={errors.name}></span>}
-          </div>
 
-          <div>
-            <input 
-              type='text'
-              id='img_url'
-              onChange={this.handleChange}
-              value={img_url}
-              className={errors.img_url && 'invalid'}
-            />
-            <label htmlFor='img_url'>Image URL</label>
-            {errors.img_url && 
-              <span data-error={errors.img_url}></span>}
-          </div>
-          
+          <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors}>Name</TextInput>
+
+          <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors}>Image URL</TextInput>
+
           <div>
             <div className='input-field'>
               <textarea 
