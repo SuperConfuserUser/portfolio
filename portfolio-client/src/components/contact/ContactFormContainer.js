@@ -16,9 +16,9 @@ export class ContactFormContainer extends Component {
 
     return (
       <div className='contact'>
-        <h1>Interested?
+        <h2>Interested?
           <span>Let's Chat</span>
-        </h1>
+        </h2>
         
         {successResponse ? 
           <ContactFormResponse response={successResponse} /> : 
