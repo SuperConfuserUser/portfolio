@@ -6,10 +6,11 @@ const TextInput = props => {
   const { klass, type, id, value, children, handleChange, errors, editMode} = props
   
   const error = Object.keys(errors).length ? 
-    (editMode ? errors && errors[id] : errors[id]) : ''
+    (errors[id] ? errors[id] : '')
+    : ''
 
   const inputKlass = error ? 'invalid' : ''
-  const labelKlass = editMode ? (id + ' active') : id
+  const labelKlass = editMode && value ? (id + ' active') : id
   
   return (  
     <div className={klass}>
