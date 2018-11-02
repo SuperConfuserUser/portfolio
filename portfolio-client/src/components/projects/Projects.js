@@ -9,6 +9,7 @@ const Projects = props => {
 
   const renderProjects = projects.map(project=> 
     <div key={project.id}>
+      <h1>Projects</h1>
       <ProjectCard project={project} />
       {admin.auth &&
         <ProjectAdminButtons project={project} admin={admin} />}
