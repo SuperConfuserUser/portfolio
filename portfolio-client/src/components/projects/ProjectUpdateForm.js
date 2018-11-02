@@ -29,9 +29,9 @@ class ProjectUpdateForm extends Component {
   }
 
   handleChange = event => {
-    const { name, value } = event.target
+    const { id, value } = event.target
     const { updateProjectFormData } = this.props
-    const currentProject = { ...this.props.projectFormData,  [name]: value }
+    const currentProject = { ...this.props.projectFormData,  [id]: value }
 
     updateProjectFormData(currentProject)
   }
@@ -61,39 +61,49 @@ class ProjectUpdateForm extends Component {
 
     return (
       <div>
-        <h3>Update Project</h3>
+        <h2>Edit Project</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="name">Name</label>
             <input 
-              type="text" 
-              name="name"
+              type='text'
+              id='name'
               onChange={this.handleChange}
               value={name}
+              className={errors && errors.name && 'invalid'}
             />
-            {errors && errors.name}
+            <label htmlFor='name' className={name && 'active'}>Name</label>
+            {errors && errors.name && 
+              <span data-error={errors && errors.name}></span>}
           </div>
+
           <div>
-            <label htmlFor="img_url">Image URL</label>
             <input 
-              type="text" 
-              name="img_url"
+              type='text'
+              id='img_url'
               onChange={this.handleChange}
               value={img_url}
+              className={errors && errors.img_url && 'invalid'}
             />
-           {errors && errors.img_url}
+            <label htmlFor='img_url' className={img_url && 'active'}>Image URL</label>
+            {errors && errors.img_url && 
+              <span data-error={errors && errors.img_url}></span>}
           </div>
+          
           <div>
-            <label htmlFor="description">Description</label>
-            <textarea 
-              name="description"
-              onChange={this.handleChange}
-              value={description}
-            />
-            {errors && errors.description}
+            <div className='input-field'>
+              <textarea 
+                id='description'
+                onChange={this.handleChange}
+                value={description}
+                className={errors && errors.description ? 'materialize-textarea invalid' : 'materialize-textarea'}
+              />
+              <label htmlFor='description' className={description && 'active'}>Description</label>
+              {errors && errors.description && 
+                <span data-error={errors && errors.description}></span>}
+            </div>
           </div>
-          <br />
-          <input type="submit" value="Update" />
+
+          <button type='submit'>Edit</button>
         </form>
       </div>
     )
