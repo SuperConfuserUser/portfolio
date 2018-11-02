@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TextInput from '../form/TextInput'
+import TextArea from '../form/TextArea'
 
 class ContactForm extends Component {
   
@@ -40,26 +41,15 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit} className='contact-form'>
-      
+
         <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors}>Name</TextInput>
 
         <TextInput id='email' value={email} handleChange={this.handleChange} errors={errors}>Email</TextInput>
 
         <TextInput id='subject' value={subject} handleChange={this.handleChange}>Subject (optional)</TextInput>
 
-        <div>
-          <div className='input-field'>
-            <textarea 
-              id='body'
-              onChange={this.handleChange}
-              value={body}
-              className={errors.body ? 'materialize-textarea invalid' : 'materialize-textarea'}
-            />
-            <label htmlFor='body'>Message</label>
-            {errors.body && 
-              <span data-error={errors.body}></span>}
-          </div>
-        </div>
+
+        <TextArea id='body' value={body} handleChange={this.handleChange} errors={errors}>Message</TextArea>
 
         <label>
           <input 
