@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login, logoutAdmin as resetAdmin } from '../../actions/adminActions'
 import ErrorMessage from './ErrorMessage'
+import TextInput from '../form/TextInput'
 
 class Login extends Component {
 
@@ -53,25 +54,9 @@ class Login extends Component {
         </h2>
 
         <form onSubmit={this.handleLogin} className='login-form'>
-          <div>
-            <input
-              type='text' 
-              id='user'
-              onChange={this.handleChange}
-              value={user}
-            />
-            <label htmlFor='user'>Username or Email</label>
-          </div>
+          <TextInput id='user' value={user} handleChange={this.handleChange}>Username or Email</TextInput>
 
-          <div>
-            <input
-              type='password' 
-              id='password'
-              onChange={this.handleChange}
-              value={password}
-            />
-            <label htmlFor='password'>Password</label>
-          </div>
+          <TextInput type='password' id='password' value={password} handleChange={this.handleChange}>Password</TextInput>
           
           <button type='submit'>Login</button>
 
