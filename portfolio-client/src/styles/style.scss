@@ -303,44 +303,6 @@ button, .btn {
 
   .primary-btn {
     display: inline;
-} @include materialize(btn-flat);
-  color: $font-color;
-  font-family: $font-stack;
-  border-radius: 0;
-  background: $accent-color-light;
-
-  %multi-btn {
-    border: 2px $accent-color-light solid;
-  }
-
-  &.primary-btn {
-    @extend %multi-btn;
-  }
-
-  &.secondary-btn {
-    @extend %multi-btn;  
-    background: $primary-color-light;
-    border: 2px $accent-color-light solid;
-  }
-
-  &:focus {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  &:hover {
-    background: $primary-color;
-    border-color: $primary-color;
-  }
-}
-
-// project update form
- .project-update-form {
-  button {
-    margin: 0;
-  }
-
-  .primary-btn {
-    display: inline;
   }
 
   .secondary-btn {
@@ -348,3 +310,4 @@ button, .btn {
     // margin-left: 1rem;
   }
 }
+
