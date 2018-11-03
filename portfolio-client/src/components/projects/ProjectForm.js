@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { updateProjectFormData, resetProjectForm } from '../../actions/projectFormActions'
 import { createProject } from '../../actions/projectsActions'
 import TextInput from '../form/TextInput'
+import TextArea from '../form/TextArea'
 
 class ProjectForm extends Component {
 
@@ -59,19 +60,7 @@ class ProjectForm extends Component {
 
           <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors}>Image URL</TextInput>
 
-          <div>
-            <div className='input-field'>
-              <textarea 
-                id='description'
-                onChange={this.handleChange}
-                value={description}
-                className={errors.description ? 'materialize-textarea invalid' : 'materialize-textarea'}
-              />
-              <label htmlFor='description'>Description</label>
-              {errors.description && 
-                <span data-error={errors.description}></span>}
-            </div>
-          </div>
+          <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors}>Description</TextArea>
 
           <button type='submit'>Add</button>
         </form>
