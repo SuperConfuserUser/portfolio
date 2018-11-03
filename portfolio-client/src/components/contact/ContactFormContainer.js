@@ -5,7 +5,7 @@ import ContactForm from './ContactForm'
 import ContactFormResponse from './ContactFormResponse'
 import { updateMessage, sendMessage, resetContactForm } from '../../actions/contactFormActions'
 
-export class ContactFormContainer extends Component {
+class ContactFormContainer extends Component {
 
   componentWillUnmount() {
     this.props.resetContactForm()

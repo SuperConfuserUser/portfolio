@@ -7,7 +7,7 @@ import ProjectAdminButtons from './ProjectAdminButtons'
 import { getProject, resetProject } from '../../actions/projectActions'
 
 
-export class ProjectContainer extends Component {
+class ProjectContainer extends Component {
 
   componentDidMount() {
     const { getProject, match } = this.props
