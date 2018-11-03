@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { deleteProject, toggleHidden } from '../../actions/projectsActions'
+import Edit from './ProjectEditButton'
 
 class ProjectAdminButtons extends Component {
 
@@ -34,7 +35,7 @@ class ProjectAdminButtons extends Component {
 
     return (
       <div>
-        <Link to={`/projects/edit/${id}`}><button>Edit</button></Link> 
+        <Edit id={id} />
         <button onClick={this.handleHide}>{hidden ? 'Unhide' : 'Hide'}</button> 
         <button onClick={this.handleDelete}>X</button>
       </div>
