@@ -6,6 +6,7 @@ import { updateProjectFormData, resetProjectForm } from '../../actions/projectFo
 import { getProject } from '../../actions/projectActions'
 import { updateProject } from '../../actions/projectsActions'
 import TextInput from '../form/TextInput'
+import TextArea from '../form/TextArea'
 
 class ProjectUpdateForm extends Component {
 
@@ -78,7 +79,10 @@ class ProjectUpdateForm extends Component {
 
           <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors} editMode={editMode}>Image URL</TextInput>
           
-          <div>
+          <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors} editMode={editMode}>Description</TextArea>
+          
+          {/* TODO: autoresize textarea when dynamically filled. check materialize css documentation */}
+          {/* <div>
             <div className='input-field'>
               <textarea 
                 id='description'
@@ -90,7 +94,7 @@ class ProjectUpdateForm extends Component {
               {errors && errors.description && 
                 <span data-error={errors && errors.description}></span>}
             </div>
-          </div>
+          </div> */}
           
           <button className='primary-btn'type='submit'>Edit</button>
 
