@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 function ErrorMessage(props) {
   return (
-    <div className='error-msg'>
-      <i class='material-icons'>block</i>
-      <span>{props.message}</span>
-    </div>
+    <p className='error-msg'>
+      <i className='fa fa-ban fa-lg'></i>
+      {props.message}
+    </p>
   )
 }
 
