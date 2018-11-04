@@ -7,6 +7,7 @@ import { getProject } from '../../actions/projectActions'
 import { updateProject } from '../../actions/projectsActions'
 import TextInput from '../form/TextInput'
 import TextArea from '../form/TextArea'
+import M from 'materialize-css'
 
 class ProjectUpdateForm extends Component {
 
@@ -15,6 +16,7 @@ class ProjectUpdateForm extends Component {
     this.state = {
       redirectUrl: ''
     }
+    this.textArea = React.createRef()
   }
 
   componentDidMount() {
@@ -23,6 +25,7 @@ class ProjectUpdateForm extends Component {
   
     if(!projectFormData.name && !Object.keys(projectFormData.errors).length) {
       getProject(projectId, true)
+        .then(() => this.resizeTextArea())
     }
   }
 
@@ -58,6 +61,13 @@ class ProjectUpdateForm extends Component {
     const { projectId } = this.props.match.params
     
     getProject(projectId, true)
+    .then(() => this.resizeTextArea())
+  }
+
+  resizeTextArea = () => {
+    const elem = this.textArea.current
+
+    M.textareaAutoResize(elem)
   }
 
   render() {
@@ -79,23 +89,8 @@ class ProjectUpdateForm extends Component {
 
           <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors} editMode={editMode}>Image URL</TextInput>
           
-          <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors} editMode={editMode}>Description</TextArea>
-          
-          {/* TODO: autoresize textarea when dynamically filled. check materialize css documentation */}
-          {/* <div>
-            <div className='input-field'>
-              <textarea 
-                id='description'
-                onChange={this.handleChange}
-                value={description}
-                className={errors && errors.description ? 'materialize-textarea invalid' : 'materialize-textarea'}
-              />
-              <label htmlFor='description' className={description && 'active'}>Description</label>
-              {errors && errors.description && 
-                <span data-error={errors && errors.description}></span>}
-            </div>
-          </div> */}
-          
+          <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors} editMode={editMode} ref={this.textArea}>Description</TextArea>
+            
           <button className='primary-btn'type='submit'>Edit</button>
 
           <button className='secondary-btn' onClick={this.handleReset}>Reset</button>

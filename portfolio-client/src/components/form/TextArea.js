@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class TextArea extends Component {
-  
+
   render() {
-    const { klass, id, value, children, handleChange, errors, editMode} = this.props
+    const { klass, id, value, children, handleChange, errors, editMode, innerRef } = this.props
   
     const error = Object.keys(errors).length ? 
       (errors[id] ? errors[id] : '') : ''
@@ -20,6 +20,7 @@ class TextArea extends Component {
             onChange={handleChange}
             value={value}
             className={inputKlass}
+            ref={innerRef}
           />
           <label htmlFor={id} className={labelKlass}>{children}</label>
           {error && 
@@ -45,4 +46,6 @@ class TextArea extends Component {
   }
 }
 
-export default TextArea
+export default React.forwardRef((props, ref) => 
+  <TextArea innerRef={ref} {...props} />
+)
