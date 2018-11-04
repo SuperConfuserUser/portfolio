@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getProjects, deleteProject, updateProject } from '../../actions/projectsActions'
 import { toggleShowHidden } from '../../actions/adminActions'
 import AdminProjects from './AdminProjects'
+import ProjectAdminControls from '../projects/ProjectAdminControls'
 
 class AdminProjectsContainer extends Component {
   componentDidMount() {
@@ -17,7 +18,8 @@ class AdminProjectsContainer extends Component {
 
     return (
       <div>
-       <AdminProjects projects={projects} admin={admin} toggleShowHidden={toggleShowHidden} />
+        <ProjectAdminControls />
+        <AdminProjects projects={projects} admin={admin} toggleShowHidden={toggleShowHidden} />
       </div>
     )
   }
