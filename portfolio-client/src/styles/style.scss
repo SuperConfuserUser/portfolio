@@ -269,6 +269,10 @@ button, .btn {
   border-radius: 0;
   background: $accent-color-light;
 
+  i {
+    @include materialize(left)
+  }
+
   %multi-btn {
     border: 2px $accent-color-light solid;
   }
@@ -306,6 +310,29 @@ button, .btn {
   .secondary-btn {
     margin-top: 4rem;
     // margin-left: 1rem;
+  }
+}
+
+// project admin buttons
+.project-admin-buttons {
+  @include materialize(valign-wrapper)
+
+  li {
+    display: inline-block;
+  }
+
+  button {
+    @include materialize(valign-wrapper)
+    text-transform: none;
+    background: transparent;
+
+    &:hover {
+      transform: scale(1);
+      border: 0;
+      box-shadow: 0 0 0 0.25rem $accent-color-light;
+      background-color: $accent-color-light;
+      transition: all ease-in-out .3s;
+    }
   }
 }
 

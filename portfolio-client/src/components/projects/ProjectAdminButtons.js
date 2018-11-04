@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { deleteProject, toggleHidden } from '../../actions/projectsActions'
-import Edit from './ProjectEditButton'
 
 class ProjectAdminButtons extends Component {
 
@@ -32,21 +31,39 @@ class ProjectAdminButtons extends Component {
   render() {
 
     const { hidden, id } = this.props.project
+    const hiddenIcon = hidden
+      ? <i className='far fa-eye fa-lg'></i>
+      : <i className='material-icons'>lock_outline</i>
+    const hiddenLabel = hidden ? 'Unhide' : 'Hide'
 
     return (
-      <div>
-        <Edit id={id} />
-        <button onClick={this.handleHide}>{hidden ? 'Unhide' : 'Hide'}</button> 
-        <button onClick={this.handleDelete}>X</button>
-      </div>
+      <ul className='project-admin-buttons'>
+        <li>
+          <Link to={`/projects/edit/${id}`}>
+            <button>
+                <i className='material-icons'>edit</i>Edit
+            </button>
+          </Link>
+        </li>
+
+        <li>
+          <button onClick={this.handleHide}>
+            {hiddenIcon}{hiddenLabel}
+          </button>
+        </li>
+        
+        <li>
+          <button onClick={this.handleDelete}>
+            <i className='fas fa-times fa-lg'></i>Delete
+          </button>
+        </li>
+      </ul>
     )
   }
 
   static propTypes = {
     project: PropTypes.object.isRequired,
-    admin: PropTypes.object.isRequired,
-    deleteProject: PropTypes.func.isRequired,
-    toggleHidden: PropTypes.func.isRequired
+    admin: PropTypes.object.isRequired
   }
 }
 
