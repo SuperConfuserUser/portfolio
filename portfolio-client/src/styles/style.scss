@@ -188,10 +188,10 @@ h2 {
   display: block;
   position: fixed;
   right: $content-side-padding;
-  top: 3%;
+  top: $content-vertical-padding;
   z-index: 9998;
   width: 16px;
-  height: 12px;
+  height: 16px;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: .5s ease-in-out;
@@ -217,15 +217,15 @@ h2 {
 }
 
   span:nth-child(1) {
-  top: 0px;
+    top: 1px;
 }
 
   span:nth-child(2) {
-  top: 5px;
+    top: 6px;
 }
 
   span:nth-child(3) {
-  top: 10px;
+    top: 11px;
   width: 12px;
 }
 
