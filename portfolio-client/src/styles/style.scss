@@ -2,12 +2,12 @@
 $font-stack: 'Roboto Mono', monospace, sans-serif;
 $primary-color: #ffeb3b;
 $primary-color-light: Snow;
+$secondary-color: #BD9934;
 $font-color: #424242;
 $font-color-light: $primary-color-light;
 $font-secondary-color: #a59292;
 $accent-color-light: rgba(0, 0, 0, 0.1);
 $accent-color-med: rgba(0, 0, 0, 0.5);
-$secondary-color: $accent-color-med;
 $radio-empty-color: $accent-color-med;
 
 $content-side-padding: 5%;
@@ -266,7 +266,6 @@ form {
 }
 
 
-
 //buttons
 button, .btn {
   @include materialize(btn-flat);
@@ -274,6 +273,7 @@ button, .btn {
   font-family: $font-stack;
   border-radius: 0;
   background: $accent-color-light;
+  text-transform: none;
 
   i {
     @include materialize(left)
@@ -298,8 +298,9 @@ button, .btn {
   }
 
   &:hover {
-    background: $primary-color;
-    border-color: $primary-color;
+    color: $font-color-light;
+    background: $secondary-color;
+    border-color: $secondary-color;
   }
 }
 
@@ -332,28 +333,41 @@ button, .btn {
     text-transform: none;
     background: transparent;
     color: $accent-color-med;
+    position: relative;
+    transition: color ease 0.3s;
+    
+    &::after {content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 0;
+      left: 0;
+      bottom: 0;
+      background-color: $accent-color-light;
+      transition: all ease-in-out 0.3s;
+    }
 
     &:hover {
-      transform: scale(1);
-      border: 0;
-      box-shadow: 0 0 0 0.25rem $accent-color-light;
-      background-color: $accent-color-light;
-      transition: all ease-in-out .3s;
       color: $font-color;
+    
+      &::after {
+        height: 100%;
     }
+  }
   }
 
   .careful:hover {
     color: $error-color;
-    box-shadow: 0 0 0 0.25rem pink;
-    background-color: pink;
+
+    &::after {content: '';
+      background-color: lightpink;
   }
+}
 }
 
 // admin projects table
 .admin-projects {
   @include materialize(highlight);
-  // table-layout: auto;
   
   %show-on-hover {
     opacity: 0;
@@ -390,19 +404,33 @@ button, .btn {
     @extend %show-on-hover;
     padding-left: 6%;
 
-    button {
-      box-shadow: none;
-      background: transparent;
+    @media #{$medium-and-down} {
+      padding: 0;
+    }
+    
+    //TODO: add tooltips to icon only mode
+    @media #{$small-and-down} {
+      padding: 0 1.5rem;
+      span {display: none;}
 
-      &:hover i {
-        @extend .icon:hover
+    button {
+        padding: 0 0.1rem;
+
+        &::after {
+          display: none;
+        }   
       }
+
+      i:hover {
+        transform: scale(1);
+        border: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px $accent-color-light;
+        background-color: $accent-color-light;
+        transition: all ease-in-out .3s;
     }
 
     .careful:hover {
-      box-shadow: none;
-      background: transparent;
-
       i {
         color: $error-color;
         transform: scale(1);
@@ -413,6 +441,9 @@ button, .btn {
         transition: all ease-in-out .3s;  
       }
     }
+    }
+  } 
+}
 
     @media #{$medium-and-down} {
       padding: 0;
