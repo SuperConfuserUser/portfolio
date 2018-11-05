@@ -41,20 +41,20 @@ class ProjectAdminButtons extends Component {
         <li>
           <Link to={`/projects/edit/${id}`}>
             <button>
-                <i className='material-icons'>edit</i>Edit
+                <i className='material-icons'>edit</i><span>Edit</span>
             </button>
           </Link>
         </li>
 
         <li>
           <button onClick={this.handleHide}>
-            {hiddenIcon}{hiddenLabel}
+            {hiddenIcon}<span>{hiddenLabel}</span>
           </button>
         </li>
         
         <li>
-          <button onClick={this.handleDelete}>
-            <i className='fas fa-times fa-lg'></i>Delete
+          <button className='careful' onClick={this.handleDelete}>
+            <i className='fas fa-times fa-lg'></i><span>Delete</span>
           </button>
         </li>
       </ul>
