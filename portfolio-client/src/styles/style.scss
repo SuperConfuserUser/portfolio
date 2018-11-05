@@ -11,6 +11,7 @@ $accent-color-med: rgba(0, 0, 0, 0.5);
 $radio-empty-color: $accent-color-med;
 
 $content-side-padding: 5%;
+$content-vertical-padding: 3%;
 
 @import 'materialize';
 @import 'variables';
@@ -85,23 +86,44 @@ h2 {
   position: relative;
   
   .hero {
-    @include materialize(col, l5, m4, hide-on-small-only, valign-wrapper, yellow);
+    @include materialize(col, l5, m4, valign-wrapper, yellow);
     color: $primary-color-light;
     position: fixed;
-    // top: 0;
-    // left: 0;
-    // bottom: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
     // display: block;
     height: 100%;
     padding-bottom: 10%;
+
     span {
-      @include materialize(col, l10, offset-l1, center-align);
+      @include materialize(col, l10, offset-l1, center-align, hide-on-small-only);
+      margin: 0 auto;
+      padding: 0;
       font-size: 12rem;
+
       @media #{$medium-and-down} {
         font-size: 8rem;
-        padding-left: 12%;
       }
     }
+
+    @media #{$small-and-down} {
+      content: '';
+      padding: 0;
+      width: 3%;
+  }
+    // @media #{$small-and-down} {
+    //   height: 5%;
+    //   width: 100%;
+    //   padding: 0;
+
+    //   span {
+    //     font-size: 3rem;
+    //     text-align: left;
+    //     line-height: 0;
+    //     margin: 0;
+    //   }
+    // }
   }
 
   .content {
@@ -112,6 +134,10 @@ h2 {
     flex-direction: column;
   }
 
+  @media #{$small-and-down} {
+    padding-left: 3%;
+  }
+  
   main {
     flex: 1 0 auto;
   }
