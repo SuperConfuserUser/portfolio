@@ -472,15 +472,23 @@ button, .btn {
   } 
 }
 
-    @media #{$medium-and-down} {
-      padding: 0;
+// project card
+ .project-card {
+  margin-bottom: 4rem;
+
+    h4 span { 
+      margin-bottom: 2rem;
     }
 
-    //TODO: add tooltips to icon only mode
-    @media #{$small-and-down} {
-      padding: 0 1.5rem;
-      span {display: none;}
-      button {padding: 0 0.1rem;}
+    a {
+      color: $font-color;
     }
+    img {
+      max-width: 100%;
+    }
+
+      //inception
+    a a {
+      @extend %link
   } 
 }

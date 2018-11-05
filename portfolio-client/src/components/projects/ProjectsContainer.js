@@ -24,7 +24,7 @@ class ProjectsContainer extends Component {
     const shownProjects = admin.showHidden ? projects : projects.filter(p => !p.hidden)
 
     return (
-      <div className="ProjectList">
+      <>
         {admin.auth && <ProjectAdminControls />}
         <Switch>
           <Route exact path={match.path} render={(props) =>
@@ -38,7 +38,7 @@ class ProjectsContainer extends Component {
             <ProjectContainer {...props} admin={admin} />}
           />
         </Switch>
-      </div>
+      </>
     )
   }
 

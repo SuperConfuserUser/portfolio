@@ -1,24 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Link } from 'react-router-dom'
+import ProjectAdminButtons from './ProjectAdminButtons'
 
 const ProjectCard = props => {
-  const { id, name, img_url, description } = props.project
-  const { match } = props
+  const { match, project, admin } = props
+  const { id, name, img_url, description, created_at } = props.project
+
+  const date = new Date(created_at)
+    .toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long'
+    })
 
   return (
-    <div key={id} className="ProjectCard">
+    <div className='project-card'>
+      {admin.auth &&
+      <ProjectAdminButtons project={project} admin={admin} />}
       <Link to={`${match.url}/${id}`}>
-        <h3>{name}</h3>
         <img src={img_url} alt={name} />
+        <h4>{name}
+          <span>{date}, Website</span>
+        </h4>
         <p>{description}</p>
-      </Link>
+        <a>Details</a>
+      </Link>     
     </div>
   )
 }
 
 ProjectCard.propTypes = {
-  project: PropTypes.object.isRequired
+  project: PropTypes.object.isRequired,
+  admin: PropTypes.object.isRequired
 }
 
 export default withRouter(ProjectCard)
