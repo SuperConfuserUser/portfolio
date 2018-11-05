@@ -21,8 +21,10 @@ function AdminProjectCard(props) {
         <i className='fa fa-link'></i>
       </Link>  
 
-  //TODO: create date helper for parsing  utc date to something more readable
-  //date.getUTCMonth() + '/' + date.getUTCDate() + '/' + date.getUTCFullYear()
+  const date = new Date(created_at)
+    .toLocaleDateString('en-US', { 
+      month:'numeric', day: 'numeric', year: '2-digit' 
+    })
 
   return (
     <tr>
@@ -32,7 +34,7 @@ function AdminProjectCard(props) {
       <td className='actions'>
         <ProjectAdminButtons admin={admin} project={project} />
       </td>
-      <td className='date'>{Math.ceil(Math.random()*10) + '/21/18' }</td>
+      <td className='date'>{date}</td>
     </tr>
   )
 }
