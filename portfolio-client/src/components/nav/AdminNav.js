@@ -1,7 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { NavLink, Link } from 'react-router-dom'
-import { logoutAdmin } from '../../actions/adminActions'
+import { Link } from 'react-router-dom'
 
 function AdminNav(props) {
   const handleLogout = event => {
@@ -11,10 +9,9 @@ function AdminNav(props) {
 
   return (
     <div className='admin-nav'>
-      <li><NavLink to='/admin'>Dashboard</NavLink></li>
-      <li><Link to='#' onClick={handleLogout}>Logout</Link></li>
+      <Link to='/admin'><i className='material-icons admin-icon'>settings</i></Link>
     </div>
   )
 }
 
-export default connect(null, { logoutAdmin })(AdminNav)
+export default AdminNav

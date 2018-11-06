@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import NavBar from './NavBar'
 import { Sidenav } from 'materialize-css'
 import MenuBtn from './MenuBtn'
+import AdminNav from './AdminNav'
+import AdminLogout from './AdminLogout'
 
 class NavBarContainer extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class NavBarContainer extends Component {
   }
 
   componentDidMount() {
+    //TODO: use a reference here
     const elem = document.querySelector(".sidenav")
     const instance = Sidenav.init(elem, {
         edge: "left",
@@ -46,8 +49,14 @@ class NavBarContainer extends Component {
     return (
       <>
         <nav className='fullnav-container'>
-          <NavBar admin={admin} klass='fullnav' />
+          <div className="nav-wrapper">
+            <ul className='fullnav' >
+              <NavBar />
+              {admin.auth && <AdminLogout />}
+            </ul>
+            {admin.auth && <AdminNav />}
           <MenuBtn show={showMenuBtn} toggleMenu={this.toggleMenu} />
+          </div>
         </nav>
         
         <nav className='sidenav-container'>
