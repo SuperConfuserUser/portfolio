@@ -13,11 +13,11 @@ class NavBarContainer extends Component {
       sideNav: {},
       showMenuBtn: true
     }
+    this.sideNavRef = React.createRef()
   }
 
   componentDidMount() {
-    //TODO: use a reference here
-    const elem = document.querySelector(".sidenav")
+    const elem = this.sideNavRef.current
     const instance = Sidenav.init(elem, {
         edge: "left",
         inDuration: 250,
@@ -52,15 +52,23 @@ class NavBarContainer extends Component {
           <div className="nav-wrapper">
             <ul className='fullnav' >
               <NavBar />
-              {admin.auth && <AdminLogout />}
+              {admin.auth && <AdminLogout klass='full-logout' />}
             </ul>
-            {admin.auth && <AdminNav />}
-          <MenuBtn show={showMenuBtn} toggleMenu={this.toggleMenu} />
+            {admin.auth && <AdminNav klass='admin-nav' />}
+            <MenuBtn show={showMenuBtn} toggleMenu={this.toggleMenu} />
           </div>
         </nav>
-        
+
         <nav className='sidenav-container'>
-          <NavBar admin={admin} klass='sidenav sidenav-close' id='slide-out' />
+          <ul id="slide-out" className="sidenav sidenav-close" ref={this.sideNavRef}>
+            <NavBar />
+            {admin.auth && 
+              <>
+                <li><div className='divider'></div></li>
+                <AdminNav />
+                <AdminLogout />
+              </>}
+          </ul>
         </nav>
       </>
     )
