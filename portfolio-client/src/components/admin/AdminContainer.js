@@ -6,9 +6,6 @@ const AdminContainer = (props) => {
   const { admin } = props
   return (
     <div>
-      <h2>Admin DashBoard
-        <span>Projects</span>
-      </h2>
       <AdminProjectsContainer admin={admin} />
     </div>
   )

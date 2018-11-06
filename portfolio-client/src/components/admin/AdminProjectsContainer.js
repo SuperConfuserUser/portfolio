@@ -18,7 +18,10 @@ class AdminProjectsContainer extends Component {
 
     return (
       <div>
-        <ProjectAdminControls />
+        <ProjectAdminControls />        
+        <h2>Admin DashBoard
+          <span>Projects</span>
+        </h2>
         <AdminProjects projects={projects} admin={admin} toggleShowHidden={toggleShowHidden} />
       </div>
     )
