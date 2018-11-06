@@ -1,17 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 function AdminNav(props) {
-  const handleLogout = event => {
-    event.preventDefault()
-    props.logoutAdmin()
-  }
+
+  const { klass } = props
+
+  const renderAdminNav =  klass === 'admin-nav'
+    ? <div className={klass}>
+        <Link to='/admin'><i className='material-icons admin-icon'>settings</i></Link>
+      </div>
+    : <li className={klass}>
+        <Link to='/admin'>Admin DashBoard</Link>
+      </li>
 
   return (
-    <div className='admin-nav'>
-      <Link to='/admin'><i className='material-icons admin-icon'>settings</i></Link>
-    </div>
+    <>
+      {renderAdminNav}
+    </>
   )
+}
+
+AdminNav.propTypes = {
+  klass: PropTypes.string
 }
 
 export default AdminNav

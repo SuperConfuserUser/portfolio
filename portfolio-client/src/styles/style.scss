@@ -199,7 +199,7 @@ em {
     text-decoration: underline;
   }
 }
-.logout {
+.full-logout {
   @include materialize(right);
 }
 
@@ -216,6 +216,8 @@ em {
 
   .admin-icon {
     color: $accent-color-med;
+    @inlude materialize(right);
+    
     &:hover {
       -webkit-animation: spin 4s infinite linear;
     }
