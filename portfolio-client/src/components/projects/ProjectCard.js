@@ -13,18 +13,23 @@ const ProjectCard = props => {
     })
 
   return (
-    <div className='project-card'>
+    <>
       {admin.auth &&
       <ProjectAdminButtons project={project} admin={admin} />}
-      <Link to={`${match.url}/${id}`}>
-        <img src={img_url} alt={name} />
-        <h4>{name}
-          <span>{date}, Website</span>
-        </h4>
-        <p>{description}</p>
-        <a>Details</a>
-      </Link>     
-    </div>
+      
+      <div className='project-card'>
+        <Link to={`${match.url}/${id}`}>
+          <img src={img_url} alt={name} />
+          <h4>{name}
+            <span>{date}, Website</span>
+          </h4>
+          <p>{description}</p>
+          <ul>
+            <li>Details</li>
+          </ul>
+        </Link>     
+      </div>
+    </>
   )
 }
 

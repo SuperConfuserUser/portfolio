@@ -1,17 +1,30 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import ProjectHiddenRoute from './ProjectHiddenRoute'
 import Project from './Project'
-import ProjectAdminButtons from './ProjectAdminButtons'
 import { getProject, resetProject } from '../../actions/projectActions'
 
 
 class ProjectContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      redirect: false
+    }
+  }
 
   componentDidMount() {
     const { getProject, match } = this.props
     getProject(match.params.projectId)
+      .then(({ project }) => {
+        if(!project.name) {
+          this.setState({
+            redirect: true
+          })
+        }
+      })
   }
 
   componentWillUnmount() {
@@ -21,24 +34,24 @@ class ProjectContainer extends Component {
   render() {
     const { match, project, admin } = this.props
 
-    return (
-      <div>
-        {admin.auth && 
-          <ProjectAdminButtons project={project} admin={admin} />}
+    if (this.state.redirect) {
+      return <Redirect to='/projects' />
+    }
 
+    return (
         <ProjectHiddenRoute exact path={match.path} component={Project} project={project} admin={admin} />
-      </div>
     )
   }
 
   static propTypes = {
     project: PropTypes.object.isRequired,
-    admin: PropTypes.object.isRequired,
-    getProject: PropTypes.func.isRequired,
-    resetProject: PropTypes.func.isRequired
+    admin: PropTypes.object.isRequired
   }
 }
 
 const mapStateToProps = ({ project }) => ({ project })
 
-export default connect(mapStateToProps, { getProject, resetProject })(ProjectContainer)
+export default connect(mapStateToProps, { 
+  getProject, 
+  resetProject 
+})(ProjectContainer)

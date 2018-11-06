@@ -501,6 +501,7 @@ button, .btn {
 // project card
  .project-card {
   margin-bottom: 4rem;
+  cursor: pointer;
 
     h4 span { 
       margin-bottom: 2rem;
@@ -509,12 +510,12 @@ button, .btn {
     a {
       color: $font-color;
     }
+
     img {
       max-width: 100%;
     }
 
-      //inception
-    a a {
+    li {
       @extend %link
   } 
 }
