@@ -6,7 +6,6 @@ import ProjectHiddenRoute from './ProjectHiddenRoute'
 import Project from './Project'
 import { getProject, resetProject } from '../../actions/projectActions'
 
-
 class ProjectContainer extends Component {
   constructor(props) {
     super(props)

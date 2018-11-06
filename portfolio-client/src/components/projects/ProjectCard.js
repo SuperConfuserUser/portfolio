@@ -15,7 +15,7 @@ const ProjectCard = props => {
   return (
     <>
       {admin.auth &&
-      <ProjectAdminButtons project={project} admin={admin} />}
+        <ProjectAdminButtons project={project} admin={admin} />}
       
       <div className='project-card'>
         <Link to={`${match.url}/${id}`}>

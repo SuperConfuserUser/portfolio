@@ -65,7 +65,7 @@ class NavBarContainer extends Component {
             {admin.auth && 
               <>
                 <li><div className='divider'></div></li>
-                <li><AdminNav /></li>
+                <AdminNav />
                 <AdminLogout />
               </>}
           </ul>
