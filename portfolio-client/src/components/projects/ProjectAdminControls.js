@@ -1,30 +1,41 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { toggleShowHidden } from '../../actions/adminActions'
+import ProjectAdminButtons from './ProjectAdminButtons'
+import ProjectAddButton from './ProjectAddButton'
+import ProjectVisibilityButton from './ProjectVisibilityButton'
 
 class ProjectAdminControls extends Component {
   
-  constructor(props) {
-    super(props)
-    this.handleShowHidden = this.handleShowHidden.bind(this)
-  }
-  
-  handleShowHidden = () => {
-    this.props.toggleShowHidden()
-  }
-
   render() {
-    const { admin } = this.props
+    const { admin, match, project, toggleShowHidden } = this.props
+
+    const renderProjectControls = project 
+      ? <ProjectAdminButtons admin={admin} project={project} klass='admin-nav' />
+      : ''
 
     return (
-      <div>
-        <br />
-        Project Controls: &nbsp;
-        <Link to='/projects/new'>+</Link> &nbsp;
-        <button onClick={this.handleShowHidden}>{admin.showHidden ? 'Hide Hidden' : 'Show Hidden'}</button>
-      </div>
+      <nav className='project-nav'>
+        <div className='nav-wrapper'>
+          <ul className=''>
+            <li>
+              <ProjectAddButton />
+            </li>
+            <li>
+              <ProjectVisibilityButton admin={admin} toggleShowHidden={toggleShowHidden}/>
+            </li>
+            {renderProjectControls}
+          </ul>
+        </div>
+      </nav>
     )
+  }
+
+  static propTypes = {
+    admin: PropTypes.object.isRequired,
+    project: PropTypes.object
   }
 }
 
