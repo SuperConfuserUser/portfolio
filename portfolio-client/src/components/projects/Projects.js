@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ProjectCard from './ProjectCard'
+import ProjectAdminControls from './ProjectAdminControls'
 
 const Projects = props => {
 
@@ -11,7 +12,9 @@ const Projects = props => {
   )
 
   return (
-    <div>
+    <div>      
+      {admin.auth && <ProjectAdminControls />}
+
       <h2>Projects
         <span>What You're Here For</span>
       </h2>

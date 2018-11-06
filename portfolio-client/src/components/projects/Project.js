@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import DetailLinkList from './DetailLinkList'
+import ProjectAdminControls from './ProjectAdminControls'
 
 function Project(props) {
   const { name, img_url, description, created_at } = props.project
@@ -25,9 +26,10 @@ function Project(props) {
     { name: 'Walkthrough', url: 'https://www.youtube.com/watch?v=Q0AULj4UltI' }
   ]
  
-
   return (
     <div className='project-detail'>
+      { props.admin.auth && 
+        <ProjectAdminControls project={props.project} />}
       <h2>
       {name}
         <span>{date}, {category}</span>

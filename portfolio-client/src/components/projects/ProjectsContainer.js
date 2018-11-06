@@ -25,7 +25,6 @@ class ProjectsContainer extends Component {
 
     return (
       <>
-        {admin.auth && <ProjectAdminControls />}
         <Switch>
           <Route exact path={match.path} render={(props) =>
             <Projects {...props} projects={shownProjects} admin={admin} />}
