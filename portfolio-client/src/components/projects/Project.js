@@ -27,23 +27,25 @@ function Project(props) {
   ]
  
   return (
-    <div className='project-detail'>
+    <>
       { props.admin.auth && 
         <ProjectAdminControls project={props.project} />}
-      <h2>
-      {name}
-        <span>{date}, {category}</span>
-      </h2>
 
-      <img src={img_url} alt={name} />
+      <div className='project-detail'>
+        <h2>
+        {name}
+          <span>{date}, {category}</span>
+        </h2>
 
-      <h5>{description}</h5>
+        <img src={img_url} alt={name} />
 
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+        <h5>{description}</h5>
 
-      <DetailLinkList links={links} />
+        <div dangerouslySetInnerHTML={{ __html: content }} />
 
-    </div>
+        <DetailLinkList links={links} />
+      </div>
+    </>
   )
 }
 
