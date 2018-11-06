@@ -31,10 +31,37 @@ class ProjectAdminButtons extends Component {
   render() {
 
     const { hidden, id } = this.props.project
+    const nav = this.props.klass === 'admin-nav'
+
     const hiddenIcon = hidden
-      ? <i className='far fa-eye fa-lg'></i>
-      : <i className='material-icons'>lock_outline</i>
+      ? <i className='far fa-eye fa-lg left'></i>
+      : <i className='material-icons left'>lock_outline</i>
     const hiddenLabel = hidden ? 'Unhide' : 'Hide'
+
+    const navList = 
+      <>
+        <li>
+          <Link to={`/projects/edit/${id}`}>
+            <i className='material-icons left'>edit</i><span>Edit</span>
+          </Link>
+        </li>
+
+        <li>
+          <div onClick={this.handleHide}>
+            {hiddenIcon}<span>{hiddenLabel}</span>
+          </div>
+        </li>
+        
+        <li>
+          <div className='careful' onClick={this.handleDelete}>
+            <i className='fas fa-times fa-lg left'></i><span>Delete</span>
+          </div>
+        </li>
+      </>
+    
+    if(nav) {
+      return navList
+    }
 
     return (
       <ul className='project-admin-buttons'>
