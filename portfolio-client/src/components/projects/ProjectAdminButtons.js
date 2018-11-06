@@ -38,31 +38,6 @@ class ProjectAdminButtons extends Component {
       : <i className='material-icons left'>lock_outline</i>
     const hiddenLabel = hidden ? 'Unhide' : 'Hide'
 
-    const navList = 
-      <>
-        <li>
-          <Link to={`/projects/edit/${id}`}>
-            <i className='material-icons left'>edit</i><span>Edit</span>
-          </Link>
-        </li>
-
-        <li>
-          <div onClick={this.handleHide}>
-            {hiddenIcon}<span>{hiddenLabel}</span>
-          </div>
-        </li>
-        
-        <li>
-          <div className='careful' onClick={this.handleDelete}>
-            <i className='fas fa-times fa-lg left'></i><span>Delete</span>
-          </div>
-        </li>
-      </>
-    
-    if(nav) {
-      return navList
-    }
-
     return (
       <ul className='project-admin-buttons'>
         <li>
@@ -81,7 +56,8 @@ class ProjectAdminButtons extends Component {
         
         <li>
           <button className='careful' onClick={this.handleDelete}>
-            <i className='fas fa-times fa-lg'></i><span>Delete</span>
+            <i className='material-icons'>clear</i><span>Delete</span>
+            
           </button>
         </li>
       </ul>

@@ -17,9 +17,9 @@ class ProjectAdminControls extends Component {
       : ''
 
     return (
-      <nav className='project-nav'>
+      <nav className='project-nav-container'>
         <div className='nav-wrapper'>
-          <ul className=''>
+          <ul className='project-nav'>
             <li>
               <ProjectAddButton />
             </li>

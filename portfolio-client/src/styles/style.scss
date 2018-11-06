@@ -74,7 +74,7 @@ em {
     left: 0;
     bottom: 0;
     background-color: $secondary-color;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.2s;
   }
 
     &:hover {
@@ -199,6 +199,7 @@ em {
     text-decoration: underline;
   }
 }
+
 .full-logout {
   @include materialize(right);
 }
@@ -217,7 +218,7 @@ em {
   .admin-icon {
     color: $accent-color-med;
     @inlude materialize(right);
-    
+
     &:hover {
       -webkit-animation: spin 4s infinite linear;
     }
@@ -232,6 +233,55 @@ em {
     }
   }
 }
+
+.project-nav-container {
+  @include materialize(z-depth-0, yellow)
+  color: $font-color;
+
+  $hover-color: $secondary-color;
+
+  .project-nav {
+    @extend .project-admin-buttons;
+  }
+
+  li {
+    &:hover {
+     background: none;
+     color: $hover-color;
+    }
+  }
+  
+  a {
+    color: $font-color;
+    &:hover {
+      background: none;
+      color: $hover-color;
+    }
+  }
+
+  .careful:hover {
+    color: $error-color; 
+  }
+
+  @media #{$medium-and-down} {
+      padding: 0 1.5rem;
+      span {display: none;}
+
+      button {
+        padding: 0 0.1rem;
+  
+        &::after {
+          display: none;
+        }   
+      }
+  }
+
+  //TODO: handle visbility btn responsiveness
+  .visibility-btn {
+
+  }
+}
+
 
 // show menu button 
 .show-menu-btn {
@@ -446,7 +496,7 @@ button, .btn {
       left: 0;
       bottom: 0;
       background-color: $accent-color-light;
-      transition: all ease-in-out 0.3s;
+      transition: all ease-in-out 0.2s;
     }
 
     &:hover {
@@ -456,6 +506,8 @@ button, .btn {
         height: 100%;
       }
     }
+
+    @extend %plain-hover;   
   }
 
   .careful:hover {
@@ -467,13 +519,29 @@ button, .btn {
   }
 }
 
+%plain-hover {
+  &::after {
+    display: none;
+    transition: none;
+  }
+  
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
 // admin projects table
 .admin-projects {
   @include materialize(highlight);
+  margin-top: 2rem;
   
   %show-on-hover {
     opacity: 0;
   }
+
+  // thead{
+  //   @include materialize(yellow);
+  // }
 
   tr:hover %show-on-hover {
     opacity: 1;
@@ -505,27 +573,9 @@ button, .btn {
   td.actions {
     @extend %show-on-hover;
     padding-left: 6%;
-
-    button {
-      &::after {
-        display: none;
-      }
-      
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-
-    .careful:hover {
-      color: $error-color;
-    }
-
-    @media #{$medium-and-down} {
-      padding: 0;
-    }
     
     //TODO: add tooltips to icon only mode
-    @media #{$small-and-down} {
+    @media #{$medium-and-down} {
       padding: 0 1.5rem;
       span {display: none;}
 
@@ -537,12 +587,17 @@ button, .btn {
         }   
       }
 
+      button:hover{
+        color: $accent-color-med;
+      }
+
       i:hover {
         transform: scale(1);
         border: 0;
         border-radius: 50%;
         box-shadow: 0 0 0 10px $accent-color-light;
         background-color: $accent-color-light;
+        color: $font-color;
         transition: all ease-in-out .3s;
       }
 

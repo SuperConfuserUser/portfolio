@@ -10,16 +10,16 @@ function ProjectVisibilityButton(props) {
   }
 
   const hiddenIcon = admin.showHidden
-    ? <i className='far fa-eye-slash fa-lg left'></i>
-    : <i className='far fa-eye fa-lg left'></i>
+    ? <i className='far fa-eye-slash fa-lg'></i>
+    : <i className='far fa-eye fa-lg'></i>
    const hiddenLabel = admin.showHidden
     ? 'Hide Hidden'
     : 'Show Hidden' 
 
   return (
-    <div onClick={handleShowHidden}>
+    <button className='visibility-btn' onClick={handleShowHidden}>
       {hiddenIcon}<span>{hiddenLabel}</span>
-    </div>
+    </button>
   )
 }
 
