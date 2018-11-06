@@ -13,7 +13,7 @@ $radio-empty-color: $accent-color-med;
 $content-side-padding: 5%;
 $content-vertical-padding: 3%;
 $content-width-full: 700px;
-$content-width-half: 500px;
+$content-width-half: 450px;
 
 @import 'materialize';
 @import 'variables';
@@ -100,6 +100,15 @@ em {
   }
 }
 
+// width control
+
+p, form {
+  max-width: $content-width-full;
+}
+
+.login form {
+  max-width: $content-width-half;
+}
 
 // app styles
 .app {
@@ -640,7 +649,6 @@ button, .btn {
 
 //project detail
 .project-detail {
-  max-width: $content-width-full;
   h2 {
     margin-bottom: 1rem;
     span {
