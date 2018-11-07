@@ -5,8 +5,10 @@ const TextInput = props => {
   
   const { klass, type, id, value, children, handleChange, errors, editMode} = props
   
-  const error = Object.keys(errors).length ? 
-    (errors[id] ? errors[id] : '')
+  const error = Object.keys(errors).length 
+    ? (errors[id] 
+      ? errors[id][0] || errors[id] 
+      : '')
     : ''
 
   const inputKlass = error ? 'invalid' : ''
