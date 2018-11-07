@@ -34,7 +34,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   @extend %font-secondary;
-
+  max-width: $content-width-full;
+  
   span {
     font-family: $font-stack;
     font-weight: 400;
@@ -73,15 +74,16 @@ em {
     height: 5%;
     left: 0;
     bottom: 0;
-    background-color: $secondary-color;
+    background: $secondary-color;
     transition: all ease-in-out 0.2s;
   }
 
     &:hover {
-    color: $font-color-light;
+    // color: $secondary-color;
     
     &::after {
       height: 100%;
+      background: $primary-color;
     }
   }
 }
@@ -387,12 +389,14 @@ footer {
   }
 
   i {
-    @extend .icon
-  }
+    @extend .icon;
 
-  // .material-icons {
-  //   font-size: 2.4rem;
-  // }
+    &:hover {
+      background: $primary-color;
+      box-shadow: 0 0 0 10px $primary-color;
+      color: $secondary-color;
+    }
+  }
 }
 
 //forms
@@ -450,18 +454,14 @@ button, .btn {
 
   &.secondary-btn {
     @extend %multi-btn;  
-    background: $primary-color-light;
+    background: transparent;
     border: 2px $accent-color-light solid;
   }
 
-  &:focus {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  &:hover {
-    color: $font-color-light;
-    background: $secondary-color;
-    border-color: $secondary-color;
+  &:hover, &:focus {
+    color: $secondary-color;
+    background: $primary-color;
+    border-color: $primary-color;
   }
 }
 
@@ -495,7 +495,7 @@ button, .btn {
     background: transparent;
     color: $accent-color-med;
     position: relative;
-    transition: color ease 0.3s;
+    transition: color ease 0.2s;
     
     &::after {content: '';
       position: absolute;
@@ -504,12 +504,12 @@ button, .btn {
       height: 0;
       left: 0;
       bottom: 0;
-      background-color: $accent-color-light;
+      background-color: $primary-color;
       transition: all ease-in-out 0.2s;
     }
 
     &:hover {
-    color: $font-color;
+    color: $secondary-color;
     
       &::after {
         height: 100%;
@@ -522,7 +522,7 @@ button, .btn {
   .careful:hover {
     color: $error-color;
 
- &::after {content: '';
+    &::after {content: '';
       background-color: lightpink;
     }   
   }
@@ -530,12 +530,17 @@ button, .btn {
 
 %plain-hover {
   &::after {
-    display: none;
+    // display: none;
     transition: none;
   }
   
   &:hover {
-    color: $secondary-color;
+    // color: $secondary-color;
+    // background: $primary-color;
+  }
+
+  .careful:hover::after {
+    background: lightpink;
   }
 }
 
@@ -548,9 +553,11 @@ button, .btn {
     opacity: 0;
   }
 
-  // thead{
-  //   @include materialize(yellow);
-  // }
+  thead{
+    // @include materialize(yellow);
+    // color: $secondary-color;
+    text-transform: uppercase;
+  }
 
   tr:hover %show-on-hover {
     opacity: 1;
