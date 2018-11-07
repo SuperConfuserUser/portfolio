@@ -1,10 +1,12 @@
 import React from 'react'
 import AdminProjectCard from './AdminProjectCard'
 
-function AdminProjects(props) {
+const AdminProjects = props => {
   const { projects, admin, toggleShowHidden } = props
 
-  const renderProjects = projects.map(project=> 
+  const sortedProjects = projects.sort((a, b) => a.id < b.id)
+
+  const renderProjects = sortedProjects.map(project=> 
     <AdminProjectCard key={project.id} project={project} admin={admin} toggleShowHidden={toggleShowHidden}  />
   )
 

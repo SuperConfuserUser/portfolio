@@ -22,12 +22,13 @@ class ProjectsContainer extends Component {
   render() {
     const { match, admin, projects } = this.props
     const shownProjects = admin.showHidden ? projects : projects.filter(p => !p.hidden)
+    const sortedProjects = shownProjects.sort((a, b) => a.id < b.id)
 
     return (
       <>
         <Switch>
           <Route exact path={match.path} render={(props) =>
-            <Projects {...props} projects={shownProjects} admin={admin} />}
+            <Projects {...props} projects={sortedProjects} admin={admin} />}
           />
           <AdminRoute path={`${match.path}/new`} component=
             {ProjectForm} admin={admin} />
