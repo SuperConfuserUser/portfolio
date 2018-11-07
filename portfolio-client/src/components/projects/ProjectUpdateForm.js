@@ -17,6 +17,7 @@ class ProjectUpdateForm extends Component {
       redirectUrl: ''
     }
     this.textArea = React.createRef()
+    this.textAreaContent = React.createRef()
   }
 
   componentDidMount() {
@@ -34,8 +35,12 @@ class ProjectUpdateForm extends Component {
   }
 
   handleChange = event => {
-    const { id, value } = event.target
+    let { id, value } = event.target
     const { updateProjectFormData } = this.props
+
+    //had to rename so default materialize .content wouldn't interfere
+    if (id === 'contents') { id = 'content'} 
+
     const currentProject = { ...this.props.projectFormData,  [id]: value }
 
     updateProjectFormData(currentProject)
@@ -65,9 +70,11 @@ class ProjectUpdateForm extends Component {
   }
 
   resizeTextArea = () => {
-    const elem = this.textArea.current
+    const elems = [this.textArea.current, this.textAreaContent.current]
 
-    M.textareaAutoResize(elem)
+    elems.forEach( el =>
+      M.textareaAutoResize(el)
+    )
   }
 
   render() {
@@ -78,7 +85,7 @@ class ProjectUpdateForm extends Component {
       return <Redirect push to={redirectUrl} />
     }
 
-    const { name, img_url, description, errors } = this.props.projectFormData
+    const { name, img_url, description, errors, category, content } = this.props.projectFormData
 
     return (
       <div>
@@ -87,9 +94,13 @@ class ProjectUpdateForm extends Component {
 
           <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors} editMode={editMode}>Name</TextInput>
 
+           <TextInput id='category' value={category} handleChange={this.handleChange} errors={errors} editMode={editMode}>Category</TextInput>
+
           <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors} editMode={editMode}>Image URL</TextInput>
           
           <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors} editMode={editMode} ref={this.textArea}>Description</TextArea>
+
+          <TextArea id='contents' value={content} handleChange={this.handleChange} errors={errors} editMode={editMode} ref={this.textAreaContent}>Content (optional)</TextArea>
             
           <button className='primary-btn'type='submit'>Edit</button>
 

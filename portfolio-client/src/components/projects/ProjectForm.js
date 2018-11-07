@@ -21,8 +21,12 @@ class ProjectForm extends Component {
   }
 
   handleChange = event => {
-    const { id, value } = event.target
+    let { id, value } = event.target
     const { updateProjectFormData } = this.props
+
+    //had to rename so default materialize .content wouldn't interfere
+    if (id === 'contents') { id = 'content'} 
+
     const currentProject = { ...this.props.projectFormData,  [id]: value }
 
     updateProjectFormData(currentProject)
@@ -49,7 +53,7 @@ class ProjectForm extends Component {
       return <Redirect push to={redirectUrl} />
     }
 
-    const { name, img_url, description, errors } = this.props.projectFormData
+    const { name, img_url, description, category, content, links_attributes, errors } = this.props.projectFormData
 
     return (
       <div>
@@ -58,9 +62,14 @@ class ProjectForm extends Component {
 
           <TextInput id='name' value={name} handleChange={this.handleChange} errors={errors}>Name</TextInput>
 
-          <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors}>Image URL</TextInput>
+          <TextInput id='category' value={category} handleChange={this.handleChange} errors={errors}>Category</TextInput>
 
           <TextArea id='description' value={description} handleChange={this.handleChange} errors={errors}>Description</TextArea>
+
+          <TextInput id='img_url' value={img_url} handleChange={this.handleChange} errors={errors}>Image URL</TextInput>
+
+          <TextArea id='contents' value={content} handleChange={this.handleChange} errors={errors}>Content (optional)</TextArea>
+
 
           <button type='submit'>Add</button>
         </form>
