@@ -5,7 +5,7 @@ import ProjectAdminButtons from './ProjectAdminButtons'
 
 const ProjectCard = props => {
   const { match, project, admin } = props
-  const { id, name, img_url, description, created_at } = props.project
+  const { id, name, category, img_url, description, created_at } = props.project
 
   const date = new Date(created_at)
     .toLocaleDateString('en-US', {
@@ -21,7 +21,7 @@ const ProjectCard = props => {
         <Link to={`${match.url}/${id}`}>
           <img src={img_url} alt={name} />
           <h4>{name}
-            <span>{date}, Website</span>
+            <span>{date}, {category}</span>
           </h4>
           <p>{description}</p>
           <ul>
