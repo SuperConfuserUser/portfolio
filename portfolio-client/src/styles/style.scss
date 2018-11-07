@@ -35,7 +35,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   @extend %font-secondary;
   max-width: $content-width-full;
-  
+
   span {
     font-family: $font-stack;
     font-weight: 400;
@@ -670,15 +670,32 @@ button, .btn {
 
   .link-list {
     margin: 2rem 0;
-  }
-
-  li {
-    display: inline;
-    margin-right: 1.5rem;
+    
+    li {
+      display: inline;
+      margin-right: 1.5rem;
+    }
   }
 
   a {
     @extend %link;
+  }
+
+  .project-content ul {
+    list-style: none outside none;
+    
+    li {
+      list-style: none outside none;
+    }
+
+    li::before {
+      content: "\2022";
+      color: $secondary-color;
+      font-weight: bold;
+      display: inline-block; 
+      width: 1rem;
+      margin-left: -1rem;
+    }
   }
 }
 
