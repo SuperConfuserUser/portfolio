@@ -19,10 +19,10 @@ export const getProject = (id, formData = false) => {
   return dispatch => {
     return fetch(`/api/projects/` + id)
       .then(response => response.json())
-      .then(project => 
-        formData ? 
-          dispatch(updateProjectFormData(project)) :
-          dispatch(setProject(project))
+      .then(project =>
+        formData  
+          ? dispatch(updateProjectFormData(project))
+          : dispatch(setProject(project))  
       )
       .catch(({ error }) => console.log(error))
   }

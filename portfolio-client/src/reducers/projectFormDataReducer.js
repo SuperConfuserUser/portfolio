@@ -2,6 +2,9 @@ const initialState = {
   name: '',
   img_url: '',
   description: '',
+  category: '',
+  content: '',
+  links: [],
   errors: {}
 }
 

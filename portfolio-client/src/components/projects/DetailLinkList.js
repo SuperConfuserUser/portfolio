@@ -5,7 +5,7 @@ function DetailLinkList(props) {
   const { links } = props
   
   const renderLinks = links.map(link => 
-    <li>
+    <li key={link.id}>
       <a href={link.url} alt={link.name} target='_blank' rel="noopener noreferrer">{link.name}</a>
     </li>
   )

@@ -2,7 +2,10 @@ const initialState = {
   name: '',
   img_url: '',
   description: '',
-  hidden: false
+  hidden: false,
+  category: '',
+  content: '',
+  links: []
 }
 
 export default (state = initialState, action) => {
