@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer>
       <div className='copyright'>
-        © 2018 Chely Ho
+        © 2019 Chely Ho
       </div>
       <div className='external-links'>
         <a href='https://github.com/unenlightened' target='_blank' rel="noopener noreferrer">
